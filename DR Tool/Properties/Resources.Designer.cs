@@ -433,16 +433,6 @@ namespace DRPlanningTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ISA_Technologies_Logo_128x77 {
-            get {
-                object obj = ResourceManager.GetObject("ISA Technologies_Logo_128x77", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Ok_16 {
             get {
                 object obj = ResourceManager.GetObject("Ok_16", resourceCulture);

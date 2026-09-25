@@ -41,7 +41,7 @@ To build it, put those folders back as siblings of the repository folder, or rep
 ## Attribution and provenance
 
 - Working copy from my Development folder `DRPT/DRPT (v2)/Solution`.
-- Written by me (Dave Robinson) and originally released under the ISA Technologies name. The assemblies carry `AssemblyCompany("Dave Robinson")` and `Copyright © Dave Robinson 2015–2016`, and the product name is "DR Planning Tool" (assembly version 2.16.1.80). Source control bindings point to a Team Foundation Server.
+- Written by Dave Robinson. The assemblies carry `AssemblyCompany("Dave Robinson")` and `Copyright © Dave Robinson 2015–2016`, and the product name is "DR Planning Tool" (assembly version 2.16.1.80). Source control bindings point to a Team Foundation Server.
 - Other DRPT copies exist in the same OneDrive folder and were intentionally **not** included: `DRPT (v1)`, `DRPT feb 2016`, the `DRPT 2.x (latest)` folder (it only holds the files the InstallShield installer deploys, not source), plus a `Backup` folder. This repository is the 2.x-era source from `DRPT (v2)`.
 - Third-party components are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 

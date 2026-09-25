@@ -1145,14 +1145,14 @@
 		<row><td>CommonFiles64Folder</td><td>TARGETDIR</td><td>.:Common64</td><td/><td>0</td><td/></row>
 		<row><td>CommonFilesFolder</td><td>TARGETDIR</td><td>.:Common</td><td/><td>0</td><td/></row>
 		<row><td>DATABASEDIR</td><td>ISYourDataBaseDir</td><td>.</td><td/><td>0</td><td/></row>
-		<row><td>DR_PLANNING_TOOL</td><td>ISA_TECHNOLOGIES</td><td>DRPLAN~1|DR Planning Tool</td><td/><td>0</td><td/></row>
+		<row><td>DR_PLANNING_TOOL</td><td>DAVE_ROBINSON</td><td>DRPLAN~1|DR Planning Tool</td><td/><td>0</td><td/></row>
 		<row><td>DR_PLANNING_TOOL1</td><td>VADER_CONSULTING</td><td>DRPLAN~1|DR Planning Tool</td><td/><td>0</td><td/></row>
 		<row><td>DesktopFolder</td><td>TARGETDIR</td><td>.:Desktop</td><td/><td>3</td><td/></row>
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
 		<row><td>INSTALLDIR</td><td>DR_PLANNING_TOOL</td><td>.</td><td/><td>0</td><td/></row>
-		<row><td>ISA_TECHNOLOGIES</td><td>ProgramFilesFolder</td><td>ISATEC~1|ISA Technologies</td><td/><td>0</td><td/></row>
+		<row><td>DAVE_ROBINSON</td><td>ProgramFilesFolder</td><td>DAVERO~1|Dave Robinson</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
@@ -1175,7 +1175,7 @@
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
 		<row><td>TemplateFolder</td><td>TARGETDIR</td><td>.:ShellNew</td><td/><td>0</td><td/></row>
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
-		<row><td>VADER_CONSULTING</td><td>ProgramFilesFolder</td><td>ISATEC~1|ISA Technologies</td><td/><td>0</td><td/></row>
+		<row><td>VADER_CONSULTING</td><td>ProgramFilesFolder</td><td>DAVERO~1|Dave Robinson</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>newfolder1</td><td>ProgramMenuFolder</td><td>##ID_STRING3##</td><td/><td>1</td><td/></row>
@@ -3766,7 +3766,7 @@
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1172063763</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td>DRPLAN~1|DR Planning Tool</td><td>0</td><td/><td>-366787318</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>Dave Robinson</td><td>0</td><td/><td>1571007726</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>ISATEC~1|ISA Technologies</td><td>0</td><td/><td>1570972942</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>DAVERO~1|Dave Robinson</td><td>0</td><td/><td>1570972942</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>DRPLAN~1|DR Planning Tool</td><td>0</td><td/><td>-366789078</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1172063763</td></row>
 	</table>

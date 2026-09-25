@@ -379,7 +379,6 @@
             // 
             // picAbout
             // 
-            this.picAbout.BackgroundImage = global::DRPlanningTool.Properties.Resources.ISA_Technologies_Logo_128x77;
             this.picAbout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picAbout.Location = new System.Drawing.Point(12, 12);
             this.picAbout.Name = "picAbout";
