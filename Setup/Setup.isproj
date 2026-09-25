@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\DR Tool\DR Planning Tool.csproj">
+			<Name>DR Planning Tool</Name>
+			<Project>{7AEA8289-5E88-4F18-AEA7-4B43A28E37D6}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Libraries\ISA.CommandLine\ISA.CommandLine.csproj">
+			<Name>ISA.CommandLine</Name>
+			<Project>{158A8806-C478-4341-922F-C64AB1D00AA7}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Libraries\ISA.DataLayer\ISA.DataLayer.csproj">
+			<Name>ISA.DataLayer</Name>
+			<Project>{E63FE536-1A80-48CA-A853-68BE30AAF768}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Libraries\ISA.Database\ISA.Database.csproj">
+			<Name>ISA.Database</Name>
+			<Project>{F44F61FD-07F6-42EF-AF53-1152CFBCC59F}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Libraries\ISA.Helper\ISA.Helper.csproj">
+			<Name>ISA.Helper</Name>
+			<Project>{BA53CE7F-858D-46AE-81C9-A88B9A730130}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

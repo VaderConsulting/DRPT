@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <ErrorCodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <ErrorCode>
+        <Type></Type>
+        <Code></Code>
+        <Message></Message>
+        <Cause></Cause>
+        <Resolution></Resolution>
+     </ErrorCode>
+     <ErrorCode>
+        <Type></Type>
+         <Code></Code>
+        <Message></Message>
+        <Cause></Cause>
+        <Resolution></Resolution>
+     </ErrorCode>
+ </ErrorCodes>

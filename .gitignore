@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+packages/
+.nugetaudit/
+*.suo
+*.user
+*.mdf
+*.ldf
+*.snk
+!Management Packs/isapublic.snk
+*.pfx
+Setup/Setup/

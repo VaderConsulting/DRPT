@@ -1,0 +1,1531 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DRPlanningTool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SystemCenter_SCOMServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CORPSCOMPRD001</Value>
+    </Setting>
+    <Setting Name="iServer_DatabaseConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=iServerDB;Database=iServerDB;Trusted_Connection=true;</Value>
+    </Setting>
+    <Setting Name="iServer23307_RelationshipsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT r.RelationshipId 
+      ,r.FromObjectId 
+      ,r.ToObjectId 
+      ,o2.ObjectName AS Service 
+      ,v.ObjectName AS ComponentName 
+      ,r.RelationReason AS Description 
+      ,v.TypeId 
+      ,v.ObjectDescription AS ComponentDescription 
+      ,v.ObjectVersionId AS VersionID 
+      --,a.AttributeValue AS ShowInRunbook 
+      ,c.AttributeValue AS RunbookOrder
+      ,m.AttributeValue AS Mandatory 
+FROM dbo.Relation AS r 
+LEFT OUTER JOIN dbo.vwObject AS v ON r.ToObjectId = v.ObjectID 
+LEFT OUTER JOIN dbo.Object AS o2 ON r.FromObjectId = o2.ObjectID 
+LEFT OUTER JOIN RelationType rt ON r.RelationTypeId = rt.RelationTypeID 
+LEFT OUTER JOIN Timestamp t ON t.TimestampId = r.TimestampId 
+LEFT OUTER JOIN Object o ON r.RelationshipId = o.ObjectId 
+--LEFT OUTER JOIN AttributeValueBigInt a ON a.ObjectId = v.ObjectID AND a.AttributeId = '#SHOWINRUNBOOK#' AND a.VersionId = v.ObjectVersionId 
+LEFT OUTER JOIN AttributeValueBigInt c ON c.ObjectId = v.ObjectID AND c.AttributeId = '#RUNBOOKORDER#' AND c.VersionId = v.ObjectVersionId 
+LEFT OUTER JOIN AttributeValueBigInt m ON m.ObjectId = o.ObjectID AND m.AttributeId = '#MANDATORY#'
+WHERE (r.FromObjectId LIKE '#OBJECTID#') AND (r.DeleteFlag = 0)</Value>
+    </Setting>
+    <Setting Name="iServer23307_GetServerDetailsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT n.ObjectID
+     , n.Server
+     , ISNULL(avt.AttributeValue,'Other') AS Site 
+     , ISNULL(Stream.AttributeValue,3) AS Stream
+     , ISNULL(InScope.AttributeValue,0) AS InScope
+     , ISNULL(Virtual.AttributeValue,0) AS Virtual
+     , ISNULL(AddToMP.AttributeValue,0) AS AddToMP
+FROM dbo.AttributeValueText AS avt 
+INNER JOIN ( SELECT DISTINCT o.ObjectID
+                           , o.ObjectName        AS Server
+                           , o.ObjectDescription AS Description
+                           , v.VersionNo
+                           , v.VersionID 
+                           , o.ObjectVersionId
+             FROM dbo.vwObject AS o INNER JOIN ( SELECT ObjectID
+                                                      , MAX(CurrentVersionNo) AS VersionNo
+                                                      , ID AS VersionID 
+                                                 FROM dbo.Version AS v 
+                                                 GROUP BY ObjectID, ID ) AS v ON o.ObjectVersionId = v.VersionID 
+             WHERE (o.LibraryId = '00000000-0000-0000-0000-000000000000') 
+               AND (o.IsDeleted = 0) 
+               AND (o.TypeId = #SERVERID#) 
+           ) AS n ON avt.AttributeId = '#PHYSICALSITE#' AND avt.ObjectId = n.ObjectID AND n.VersionID = avt.VersionId 
+LEFT JOIN AttributeValueText Stream    ON Stream.VersionId  = n.ObjectVersionId AND Stream.AttributeId   = '#STREAM#'
+LEFT JOIN AttributeValueBigInt InScope ON InScope.VersionId = n.ObjectVersionId AND InScope.AttributeId  = '#INSCOPE#'
+LEFT JOIN AttributeValueBigInt Virtual ON Virtual.VersionId = n.ObjectVersionId AND Virtual.AttributeId  = '#VIRTUAL#'
+LEFT JOIN AttributeValueBigInt AddToMP ON AddToMP.VersionId = n.ObjectVersionId AND AddToMP.AttributeId  = '#ADDTOMP#'
+ORDER BY SERVER</Value>
+    </Setting>
+    <Setting Name="SystemCenter_ManagementPackIDPrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FIN.DistributedApplication.</Value>
+    </Setting>
+    <Setting Name="SystemCenter_ManagementPackFriendlyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Finance Distributed Application - #SERVICENAME#</Value>
+    </Setting>
+    <Setting Name="SystemCenter_ManagementPackSaveFolderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#MYDOCS#</Value>
+    </Setting>
+    <Setting Name="SystemCenter_ManagementPackDescription" Type="System.String" Scope="User">
+      <Value Profile="(Default)">This management pack defines the #SERVICENAME# Distributed Application.</Value>
+    </Setting>
+    <Setting Name="SystemCenter_DistributedApplicationFriendlyNamePrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SystemCenter_ManagementPackSealCommandline" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Protect-SCSMManagementPack -Version 2 -ManagementPackFile "#MPFILENAME#" -KeyFilePath "#KEYFILEFILENAME#" -CompanyName "#KEYCOMPANYNAME#" -OutputDirectory "#MPPATH#"</Value>
+    </Setting>
+    <Setting Name="KeyfileFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CompanyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Your Organisation</Value>
+    </Setting>
+    <Setting Name="PowershellModulePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SystemCenter_SealManagementPacks" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ImportSCOMManagementPacks" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HelpHintTimemS" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8000</Value>
+    </Setting>
+    <Setting Name="Security_SystemCenterMPAuthorGroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">USR - DR System Centre Admin</Value>
+    </Setting>
+    <Setting Name="ShowDrawingStatusOnBusinessApplication" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SystemCenter_CreateManagementPacksRegardlessOfDocumentStatus" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ConnectToProductionSQLUponStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowDrawingLessBusinessApplications" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ExportFolderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#LISTNAME#-#YEAR##MONTH##DAY#-#HOUR##MINUTE#.txt</Value>
+    </Setting>
+    <Setting Name="iServer23307_GetDrawingsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT * FROM 
+(
+SELECT Drawing.ObjectID                              AS DrawingID
+     , Drawing.ObjectVersionID                       AS DrawingVersionID
+     , Drawing.ObjectName                            AS DrawingName
+     , Drawing.ObjectDescription                     AS DrawingDescription
+     , Drawing.SystemVersionNo                       AS DrawingVersion
+     , PagePreviews.PagePreviewImage                 AS DrawingImage 
+     , CASE ISNULL(DrawingStatus.AttributeValue, -1)
+          WHEN -1 THEN 'N/A'
+          WHEN 0  THEN 'Draft'
+          WHEN 1  THEN 'Pending Review'
+          WHEN 2  THEN 'Approved'
+       ELSE DrawingStatus.AttributeValue
+       END                                           AS DrawingStatuse
+     , Object.ObjectName                             AS DrawingFocusedServiceName
+     , LastDrawingUpdate.AttributeValue              AS LastUpdate
+     , Version.Notes                                 AS DrawingNote
+     , ROW_NUMBER() OVER (PARTITION BY Drawing.ObjectID ORDER BY Drawing.ObjectID) AS GroupedRowNumber
+FROM vwObject Drawing
+INNER JOIN RelationDocument  rd                ON rd.DocumentId                 = Drawing.ObjectID
+INNER JOIN Relation          Relation          ON Relation.RelationshipId       = rd.RelationshipId
+INNER JOIN vwObject          Object            ON Object.ObjectID               = Relation.FromObjectId AND Object.TypeId = #BusinessApplicationID#
+INNER JOIN Version           Version           ON Version.ObjectID              = Drawing.ObjectId AND Version.ID = Drawing.ObjectVersionId
+LEFT JOIN VisioPagePreviews  PagePreviews      ON PagePreviews.ObjectID         = Drawing.ObjectId AND Version.ID = Drawing.ObjectVersionId
+LEFT JOIN AttributeValueText DrawingStatus     ON DrawingStatus.AttributeId     = '#DRAWINGSTATUS#' AND DrawingStatus.VersionId = Drawing.ObjectVersionId
+LEFT JOIN AttributeValueText LastDrawingUpdate ON LastDrawingUpdate.AttributeId = '#LASTUPDATE#' AND LastDrawingUpdate.VersionId = Drawing.ObjectVersionId
+WHERE Drawing.TypeId = #DRAWINGID# AND Drawing.IsDeleted = 0 AND Drawing.ObjectParentID = '#DOCUMENTROOTID#'
+) t
+WHERE GroupedRowNumber = 1
+ORDER BY DrawingName</Value>
+    </Setting>
+    <Setting Name="iServer23307_GetBusinessApplicationDetailsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT DISTINCT Service.ObjectID             AS ServiceID
+     , ObjectName                            AS ServiceName
+     , ObjectDescription                     AS ServiceDescription
+     , ObjectVersionID                       AS ServiceVersionID
+     , SystemVersionNo                       AS ServiceVersion
+     , Tier.AttributeValue                   AS Tier
+     , RunbookOrder.AttributeValue           AS RunbookOrder
+     , ServiceDisplayName.AttributeValue     AS ServiceDisplayName
+     , ShowInServiceCatalogue.AttributeValue AS ShowInServiceCatalogue
+     , SubService.AttributeValue             AS SubService
+     , InScope.AttributeValue                AS InScope
+     , HighlyAvailable.AttributeValue        AS HighlyAvailable
+FROM vwObject Service
+INNER JOIN (SELECT ObjectID
+                 , MAX(CurrentVersionNo) AS VersionNo
+                 , ID AS VersionID 
+            FROM dbo.Version AS v GROUP BY ObjectID, ID 
+           ) AS Version ON Service.ObjectVersionId = Version.VersionID  
+LEFT JOIN AttributeValueText Stream                   ON Stream.VersionId =                 Service.ObjectVersionId AND Stream.AttributeId =                 '#STREAM#'
+LEFT JOIN AttributeValueBigInt Tier                   ON Tier.VersionId =                   Service.ObjectVersionId AND Tier.AttributeId =                   '#TIER#'
+LEFT JOIN AttributeValueBigInt RunbookOrder           ON RunbookOrder.VersionId =           Service.ObjectVersionId AND RunbookOrder.AttributeId =           '#RUNBOOKORDER#'
+LEFT JOIN AttributeValueText ServiceDisplayName       ON ServiceDisplayName.VersionId =     Service.ObjectVersionId AND ServiceDisplayName.AttributeId =     '#SERVICEDISPLAYNAME#'
+LEFT JOIN AttributeValueBigInt ShowInServiceCatalogue ON ShowInServiceCatalogue.VersionId = Service.ObjectVersionId AND ShowInServiceCatalogue.AttributeId = '#SHOWINSERVICECATALOG#'
+LEFT JOIN AttributeValueBigInt SubService             ON SubService.VersionId =             Service.ObjectVersionId AND SubService.AttributeId =             '#SUBSERVICE#'
+LEFT JOIN AttributeValueBigInt InScope                ON InScope.VersionId =                Service.ObjectVersionId AND InScope.AttributeId =                '#INSCOPE#'
+LEFT JOIN AttributeValueBigInt HighlyAvailable        ON HighlyAvailable.VersionId =        Service.ObjectVersionId AND HighlyAvailable.AttributeId =        '#HIGHLYAVAILABLE#'
+WHERE (Service.LibraryId = '00000000-0000-0000-0000-000000000000') 
+  AND (Service.IsDeleted = 0) 
+  AND (Service.TypeId    = #BusinessApplicationID#) 
+  AND (Service.ObjectID  = '#SERVICEID#')</Value>
+    </Setting>
+    <Setting Name="iServer23307_GetFocusedBusinessApplicationFromDrawingQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT ObjectID
+     , ObjectName
+     , ObjectDescription
+     , ObjectVersionId
+FROM vwObject v 
+WHERE v.ObjectName LIKE '#FOCUSEDSERVICENAME#' 
+  AND v.TypeId = #BusinessApplicationID#</Value>
+    </Setting>
+    <Setting Name="ServerBackgroundColour" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LightGreen</Value>
+    </Setting>
+    <Setting Name="ShowPossibleServerLocations" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="iServer_ProductionDocumentRootID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0FCB6CF0-CC74-40B2-8DC6-1067DC216C1E</Value>
+    </Setting>
+    <Setting Name="iServer_DevelopmentDocumentRootID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D0C3BFA8-6619-4545-A030-486DFACC0986</Value>
+    </Setting>
+    <Setting Name="SystemCenter_SCSMServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CORPSCSMPRD001</Value>
+    </Setting>
+    <Setting Name="ImportSCSMManagementPacks" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BusinessApplicationBackgroundColour" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LightGreen</Value>
+    </Setting>
+    <Setting Name="ShowPossibleServiceLocations" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ConnectToDevelopmentSQLUponStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="iServer_PhysicalSiteAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DBB1AFF3-8C8B-424E-8B2F-7FD9CE2568DA</Value>
+    </Setting>
+    <Setting Name="iServer_StreamAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">749FB735-AB26-4302-BAAD-7FBDFFAF8A8F</Value>
+    </Setting>
+    <Setting Name="iServer_TierAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C4E42F57-8BE6-452F-841D-C2B5070CAA1A</Value>
+    </Setting>
+    <Setting Name="iServer_RunbookOrderAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E94D58B7-8942-4A05-92EA-CD5942C49C07</Value>
+    </Setting>
+    <Setting Name="iServer_ServiceDisplayNameAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1AC31119-F69D-440A-88BF-F177D760603F</Value>
+    </Setting>
+    <Setting Name="iServer_ShowInServiceCatalogAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F80FD169-6EC2-47E9-951F-4D8988D6C166</Value>
+    </Setting>
+    <Setting Name="iServer_SubServiceAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FA0F55D9-EE64-4159-88D4-2290C1281979</Value>
+    </Setting>
+    <Setting Name="iServer_MandatoryAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BA7AB41D-B158-4CD2-AA5F-A197C38B17F7</Value>
+    </Setting>
+    <Setting Name="iServer_FocusedServiceAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CB48F04F-03AA-47A1-BE2C-43F4907438F5</Value>
+    </Setting>
+    <Setting Name="iServer_DrawingStatusAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C302BC0C-1FB1-4E25-A7AE-AC018FF27190</Value>
+    </Setting>
+    <Setting Name="vCenter_InformationQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT VMID
+     , NAME
+     , MEM_SIZE_MB
+     , NUM_VCPU
+     , POWER_STATE
+     , ISNULL(CASE [Guest_OS] 
+         WHEN 'centosGuest' THEN 'CENTOS' 
+         WHEN 'other26xLinux64Guest' THEN 'Linux 2.6 Kernel x64' 
+         WHEN 'other26xLinuxGuest' THEN 'Linux 2.6 Kernel x86' 
+         WHEN 'otherGuest' THEN 'Unknown'
+         WHEN 'redhatGuest' THEN 'Red Hat x86' 
+         WHEN 'rhel4_64Guest' THEN 'Red Hat Enterprise Linux 4 x64' 
+         WHEN 'rhel5Guest' THEN 'Red Hat Enterprise Linux 5 x86' 
+         WHEN 'sles11_64Guest' THEN 'SUSE Linux Enterprise Server 11 x64'
+         WHEN 'win2000ServGuest' THEN 'Windows Server 2000 Standard x86' 
+         WHEN 'windows7Guest' THEN 'Windows 7 x86' 
+         WHEN 'windows7_64Guest' THEN 'Windows 7 x64' 
+         WHEN 'windows8Server64Guest' THEN 'Windows Server 2012 x64' 
+         WHEN 'windows7Server64Guest' THEN 'Windows Server 2008 R2 x64' 
+         WHEN 'winLonghorn64Guest' THEN 'Windows Server 2008 x64' 
+         WHEN 'winLonghornGuest' THEN 'Windows Server 2008 x86'
+         WHEN 'winNetEnterpriseGuest' THEN 'Windows Server 2003 Enterprise x86' 
+         WHEN 'winNetStandard64Guest' THEN 'Windows Server 2003 Standard x64' 
+         WHEN 'winNetStandardGuest' THEN 'Windows Server 2003 Standard x86'
+         WHEN 'winVistaGuest' THEN 'Windows Vista x86' 
+         WHEN 'winXPProGuest' THEN 'Windows XP Professional x86' 
+         WHEN 'winNetEnterprise64Guest' THEN 'Windows Server 2003 Enterprise x64' 
+         WHEN 'oracleLinux64Guest' THEN 'Oracle Linux x64' 
+         WHEN 'freebsd64Guest' THEN 'FreeBSD x64' 
+         WHEN 'ubuntu64Guest' THEN 'Ubuntu x64' 
+         WHEN 'solaris10Guest' THEN 'Solaris 10 x86' 
+         WHEN 'solaris10_64Guest' THEN 'Solaris 10 x64'
+         WHEN 'otherLinux64Guest' THEN 'Linux x64' 
+         ELSE Guest_OS 
+       END,'') AS GuestOS
+     , ISNULL(GUEST_FAMILY,'')
+     , MEMORY_OVERHEAD / (1024 * 1024) AS Mem_Ovhd
+     , ISNULL(REPLACE(UPPER(DNS_NAME), '.CORP.EXAMPLE.ORG', ''),'') AS DNS_NAME
+     , ISNULL(IP_ADDRESS,'')
+     , VMMWARE_TOOL
+     , NUM_NIC
+     , NUM_DISK
+     , CASE [IS_TEMPLATE] 
+         WHEN 1 THEN 'True' 
+         WHEN 0 THEN 'False' 
+       END AS Template
+     , DESCRIPTION
+     , ANNOTATION
+     , CONVERT(DECIMAL(10, 0), ROUND(AGGR_COMMITED_STORAGE_SPACE / (1024 * 1024), 0)) AS Agg_CommDiskMB
+     , CONVERT(DECIMAL(10, 0), ROUND(AGGR_UNCOMMITED_STORAGE_SPACE / (1024 * 1024), 0)) AS Agg_UnCommDiskMB
+     , CONVERT(DECIMAL(10, 0), ROUND(AGGR_UNSHARED_STORAGE_SPACE / (1024 * 1024), 0)) AS Agg_UnSharDiskMB
+FROM VPXV_VMS WITH (NOLOCK, NOWAIT)
+ORDER BY NAME</Value>
+    </Setting>
+    <Setting Name="vCenter_StorageQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT VM.NAME
+     , ISNULL(REPLACE(UPPER(VM.DNS_NAME), '.CORP.EXAMPLE.ORG', ''),'') AS DNS_NAME
+     , VVD.DEVICE_INFO_LABEL AS DISK_LABEL
+     , CAST(VD.HARDWARE_DEVICE_CAPACITY_IN AS BIGINT) / (1024 * 1024) AS DiskSizeGB
+     , DS.NAME AS DATASTORE
+FROM VPX_VDEVICE_FILE_BACKING_X AS FBX WITH (NOLOCK, NOWAIT) 
+INNER JOIN VPX_VDEVICE_FILE_BACKING AS FB WITH (NOLOCK, NOWAIT) ON FB.BACKING_ID = FBX.BACKING_ID 
+INNER JOIN VPXV_VMS AS VM WITH (NOLOCK, NOWAIT) ON VM.VMID = FBX.VM_ID 
+INNER JOIN VPXV_DATASTORE AS DS WITH (NOLOCK, NOWAIT) ON DS.ID = FB.DATASTORE_ID 
+INNER JOIN VPX_VIRTUAL_DISK AS VD WITH (NOLOCK, NOWAIT) ON FB.VM_ID = VD.VM_ID AND FB.UPDATE_KEY = VD.UPDATE_KEY 
+INNER JOIN VPX_VIRTUAL_DEVICE AS VVD WITH (NOLOCK, NOWAIT) ON VVD.VDEVICE_ID = VD.VDEVICE_ID
+ORDER BY VM.NAME</Value>
+    </Setting>
+    <Setting Name="IgnoreManagementPackCreationErrors" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="vCenter_PrimaryDatabaseConnection" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=CORPSQLPRD001;Database=VIM_VCDB;Trusted_Connection=true;</Value>
+    </Setting>
+    <Setting Name="Restore_ParallelRestoreCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="Restore_StreamARestoreTime1" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBRestoreTime1" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:08:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCRestoreTime1" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDRestoreTime1" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:10:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamERestoreTime1" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:10:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamARestoreRate1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBRestoreRate1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCRestoreRate1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDRestoreRate1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamERestoreRate1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamAAvailabilityPreditionMethod" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBAvailabilityPreditionMethod" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCAvailabilityPreditionMethod" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDAvailabilityPreditionMethod" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Restore_StreamEAvailabilityPreditionMethod" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Restore_StreamARestoreTime2" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBRestoreTime2" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:08:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCRestoreTime2" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:10:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDRestoreTime2" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:15:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamERestoreTime2" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:15:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamARestoreRate2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBRestoreRate2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCRestoreRate2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDRestoreRate2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamERestoreRate2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="Restore_StreamAIntervalPeriod" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBIntervalPeriod" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCIntervalPeriod" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDIntervalPeriod" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamEIntervalPeriod" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="EnablevCenterQueries" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="EnableSystemCenterFunctions" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowCheckboxesOnServiceList" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowDrawingStatusColumn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SystemCenter_MPEmptyTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;Manifest&gt;
+        &lt;Identity&gt;
+            &lt;ID&gt;#MANAGEMENTPACK_ID#&lt;/ID&gt;
+            &lt;Version&gt;#MANAGEMENTPACK_VERSION#&lt;/Version&gt;
+        &lt;/Identity&gt;
+        &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+        &lt;References&gt;
+            &lt;Reference Alias="SystemCenter"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="MicrosoftSystemCenterServiceDesignerLibrary7084320"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.ServiceDesigner.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemLibrary7585010"&gt;
+                &lt;ID&gt;System.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemHealthLibrary7084320"&gt;
+                &lt;ID&gt;System.Health.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="Image"&gt;
+                &lt;ID&gt;System.Image.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="FinanceCustomisation"&gt;
+                &lt;ID&gt;FIN.DistributedApplications.Core.Customisations&lt;/ID&gt;
+                &lt;Version&gt;1.0.0.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;5e81ba032cd019e2&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+        &lt;/References&gt;
+    &lt;/Manifest&gt;
+    &lt;TypeDefinitions&gt;
+        &lt;EntityTypes&gt;
+            &lt;ClassTypes&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.GenericService" Hosted="false" Singleton="true" Extension="false" /&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.ServiceComponentGroup" Hosted="false" Singleton="true" Extension="false" /&gt;
+            &lt;/ClassTypes&gt;
+            &lt;RelationshipTypes&gt;
+                &lt;RelationshipType ID="CGDA_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                &lt;/RelationshipType&gt;
+            &lt;/RelationshipTypes&gt;
+        &lt;/EntityTypes&gt;
+    &lt;/TypeDefinitions&gt;
+    &lt;Monitoring&gt;
+        &lt;Discoveries&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGDA_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+        &lt;/Discoveries&gt;
+    &lt;/Monitoring&gt;
+    &lt;Presentation&gt;
+        &lt;Views&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.ServiceStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.StateViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+                &lt;Criteria&gt;
+                    &lt;InMaintenanceMode&gt;false&lt;/InMaintenanceMode&gt;
+                &lt;/Criteria&gt;
+            &lt;/View&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.DiagramStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.DiagramViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+            &lt;/View&gt;
+        &lt;/Views&gt;
+        &lt;Folders&gt;
+            &lt;Folder ID="FIN.DA.VIEWFOLDER.ViewFolder" Accessibility="Public" ParentFolder="FinanceCustomisation!FIN.DistributedApplications.Core.ViewFolder" /&gt;
+        &lt;/Folders&gt;
+        &lt;FolderItems&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.ServiceStateView" ID="#MANAGEMENTPACK_ID#.ServiceStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.DiagramStateView" ID="#MANAGEMENTPACK_ID#.DiagramStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+        &lt;/FolderItems&gt;
+    &lt;/Presentation&gt;
+    &lt;LanguagePacks&gt;
+        &lt;LanguagePack ID="ENU" IsDefault="true"&gt;
+            &lt;DisplayStrings&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#"&gt;
+                    &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;This management pack defines the #SERVICE_NAME# Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Component Group&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation"&gt;
+                    &lt;Name&gt;Distributed Application Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Components are members of this Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.ServiceStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service State&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service State View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.DiagramStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service Diagram&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service Diagram View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="FIN.DA.VIEWFOLDER.ViewFolder"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME#&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+            &lt;/DisplayStrings&gt;
+        &lt;/LanguagePack&gt;
+    &lt;/LanguagePacks&gt;
+&lt;/ManagementPack&gt;</Value>
+    </Setting>
+    <Setting Name="SystemCenter_MPServersAndServicesTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;Manifest&gt;
+        &lt;Identity&gt;
+            &lt;ID&gt;#MANAGEMENTPACK_ID#&lt;/ID&gt;
+            &lt;Version&gt;#MANAGEMENTPACK_VERSION#&lt;/Version&gt;
+        &lt;/Identity&gt;
+        &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+        &lt;References&gt;
+            &lt;Reference Alias="SystemCenter"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="MicrosoftSystemCenterServiceDesignerLibrary7084320"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.ServiceDesigner.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemLibrary7585010"&gt;
+                &lt;ID&gt;System.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemHealthLibrary7084320"&gt;
+                &lt;ID&gt;System.Health.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="Image"&gt;
+                &lt;ID&gt;System.Image.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="FinanceCustomisation"&gt;
+                &lt;ID&gt;FIN.DistributedApplications.Core.Customisations&lt;/ID&gt;
+                &lt;Version&gt;1.0.0.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;5e81ba032cd019e2&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+        &lt;/References&gt;
+    &lt;/Manifest&gt;
+    &lt;TypeDefinitions&gt;
+        &lt;EntityTypes&gt;
+            &lt;ClassTypes&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.GenericService" Hosted="false" Singleton="true" Extension="false" /&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.ServiceComponentGroup" Hosted="false" Singleton="true" Extension="false" /&gt;
+            &lt;/ClassTypes&gt;
+            &lt;RelationshipTypes&gt;
+                &lt;RelationshipType ID="CGSERVICE_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.Service" /&gt;
+                &lt;/RelationshipType&gt;
+                &lt;RelationshipType ID="CGSERVER_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="SystemLibrary7585010!System.Computer" /&gt;
+                &lt;/RelationshipType&gt;
+                &lt;RelationshipType ID="CGDA_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                &lt;/RelationshipType&gt;
+            &lt;/RelationshipTypes&gt;
+        &lt;/EntityTypes&gt;
+    &lt;/TypeDefinitions&gt;
+    &lt;Monitoring&gt;
+        &lt;Discoveries&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGDA_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.Service"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGSERVICE_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                            #SERVICE_INCLUDELIST#
+                        &lt;/MembershipRule&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="SystemLibrary7585010!System.Computer"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGSERVER_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                            #SERVER_INCLUDELIST#
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+        &lt;/Discoveries&gt;
+    &lt;/Monitoring&gt;
+    &lt;Presentation&gt;
+        &lt;Views&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.ServiceStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.StateViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+                &lt;Criteria&gt;
+                    &lt;InMaintenanceMode&gt;false&lt;/InMaintenanceMode&gt;
+                &lt;/Criteria&gt;
+            &lt;/View&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.DiagramStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.DiagramViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+            &lt;/View&gt;
+        &lt;/Views&gt;
+        &lt;Folders&gt;
+            &lt;Folder ID="FIN.DA.VIEWFOLDER.ViewFolder" Accessibility="Public" ParentFolder="FinanceCustomisation!FIN.DistributedApplications.Core.ViewFolder" /&gt;
+        &lt;/Folders&gt;
+        &lt;FolderItems&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.ServiceStateView" ID="#MANAGEMENTPACK_ID#.ServiceStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.DiagramStateView" ID="#MANAGEMENTPACK_ID#.DiagramStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+        &lt;/FolderItems&gt;
+    &lt;/Presentation&gt;
+    &lt;LanguagePacks&gt;
+        &lt;LanguagePack ID="ENU" IsDefault="true"&gt;
+            &lt;DisplayStrings&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#"&gt;
+                    &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;This management pack defines the #SERVICE_NAME# Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Component Group&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation"&gt;
+                    &lt;Name&gt;Distributed Application Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Components are members of this Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation"&gt;
+                    &lt;Name&gt;Component Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Objects are members of this Component.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.ServiceStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service State&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service State View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.DiagramStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service Diagram&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service Diagram View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="FIN.DA.VIEWFOLDER.ViewFolder"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME#&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+            &lt;/DisplayStrings&gt;
+        &lt;/LanguagePack&gt;
+    &lt;/LanguagePacks&gt;
+&lt;/ManagementPack&gt;</Value>
+    </Setting>
+    <Setting Name="SystemCenter_MPServersTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;Manifest&gt;
+        &lt;Identity&gt;
+            &lt;ID&gt;#MANAGEMENTPACK_ID#&lt;/ID&gt;
+            &lt;Version&gt;#MANAGEMENTPACK_VERSION#&lt;/Version&gt;
+        &lt;/Identity&gt;
+        &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+        &lt;References&gt;
+            &lt;Reference Alias="SystemCenter"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="MicrosoftSystemCenterServiceDesignerLibrary7084320"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.ServiceDesigner.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemLibrary7585010"&gt;
+                &lt;ID&gt;System.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemHealthLibrary7084320"&gt;
+                &lt;ID&gt;System.Health.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="Image"&gt;
+                &lt;ID&gt;System.Image.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="FinanceCustomisation"&gt;
+                &lt;ID&gt;FIN.DistributedApplications.Core.Customisations&lt;/ID&gt;
+                &lt;Version&gt;1.0.0.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;5e81ba032cd019e2&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+        &lt;/References&gt;
+    &lt;/Manifest&gt;
+    &lt;TypeDefinitions&gt;
+        &lt;EntityTypes&gt;
+            &lt;ClassTypes&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.GenericService" Hosted="false" Singleton="true" Extension="false" /&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.ServiceComponentGroup" Hosted="false" Singleton="true" Extension="false" /&gt;
+            &lt;/ClassTypes&gt;
+            &lt;RelationshipTypes&gt;
+                &lt;RelationshipType ID="CGSERVER_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="SystemLibrary7585010!System.Computer" /&gt;
+                &lt;/RelationshipType&gt;
+                &lt;RelationshipType ID="CGDA_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                &lt;/RelationshipType&gt;
+            &lt;/RelationshipTypes&gt;
+        &lt;/EntityTypes&gt;
+    &lt;/TypeDefinitions&gt;
+    &lt;Monitoring&gt;
+        &lt;Discoveries&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGDA_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="SystemLibrary7585010!System.Computer"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGSERVER_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                            #SERVER_INCLUDELIST#
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+        &lt;/Discoveries&gt;
+    &lt;/Monitoring&gt;
+    &lt;Presentation&gt;
+        &lt;Views&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.ServiceStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.StateViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+                &lt;Criteria&gt;
+                    &lt;InMaintenanceMode&gt;false&lt;/InMaintenanceMode&gt;
+                &lt;/Criteria&gt;
+            &lt;/View&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.DiagramStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.DiagramViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+            &lt;/View&gt;
+        &lt;/Views&gt;
+        &lt;Folders&gt;
+            &lt;Folder ID="FIN.DA.VIEWFOLDER.ViewFolder" Accessibility="Public" ParentFolder="FinanceCustomisation!FIN.DistributedApplications.Core.ViewFolder" /&gt;
+        &lt;/Folders&gt;
+        &lt;FolderItems&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.ServiceStateView" ID="#MANAGEMENTPACK_ID#.ServiceStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.DiagramStateView" ID="#MANAGEMENTPACK_ID#.DiagramStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+        &lt;/FolderItems&gt;
+    &lt;/Presentation&gt;
+    &lt;LanguagePacks&gt;
+        &lt;LanguagePack ID="ENU" IsDefault="true"&gt;
+            &lt;DisplayStrings&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#"&gt;
+                    &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;This management pack defines the #SERVICE_NAME# Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Component Group&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation"&gt;
+                    &lt;Name&gt;Distributed Application Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Components are members of this Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation"&gt;
+                    &lt;Name&gt;Component Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Objects are members of this Component.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.ServiceStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service State&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service State View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.DiagramStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service Diagram&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service Diagram View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="FIN.DA.VIEWFOLDER.ViewFolder"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME#&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+            &lt;/DisplayStrings&gt;
+        &lt;/LanguagePack&gt;
+    &lt;/LanguagePacks&gt;
+&lt;/ManagementPack&gt;</Value>
+    </Setting>
+    <Setting Name="SystemCenter_MPServicesTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;Manifest&gt;
+        &lt;Identity&gt;
+            &lt;ID&gt;#MANAGEMENTPACK_ID#&lt;/ID&gt;
+            &lt;Version&gt;#MANAGEMENTPACK_VERSION#&lt;/Version&gt;
+        &lt;/Identity&gt;
+        &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+        &lt;References&gt;
+            &lt;Reference Alias="SystemCenter"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="MicrosoftSystemCenterServiceDesignerLibrary7084320"&gt;
+                &lt;ID&gt;Microsoft.SystemCenter.ServiceDesigner.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemLibrary7585010"&gt;
+                &lt;ID&gt;System.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="SystemHealthLibrary7084320"&gt;
+                &lt;ID&gt;System.Health.Library&lt;/ID&gt;
+                &lt;Version&gt;7.0.8432.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="Image"&gt;
+                &lt;ID&gt;System.Image.Library&lt;/ID&gt;
+                &lt;Version&gt;7.5.8501.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;31bf3856ad364e35&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+            &lt;Reference Alias="FinanceCustomisation"&gt;
+                &lt;ID&gt;FIN.DistributedApplications.Core.Customisations&lt;/ID&gt;
+                &lt;Version&gt;1.0.0.0&lt;/Version&gt;
+                &lt;PublicKeyToken&gt;5e81ba032cd019e2&lt;/PublicKeyToken&gt;
+            &lt;/Reference&gt;
+        &lt;/References&gt;
+    &lt;/Manifest&gt;
+    &lt;TypeDefinitions&gt;
+        &lt;EntityTypes&gt;
+            &lt;ClassTypes&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.GenericService" Hosted="false" Singleton="true" Extension="false" /&gt;
+                &lt;ClassType ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.ServiceComponentGroup" Hosted="false" Singleton="true" Extension="false" /&gt;
+            &lt;/ClassTypes&gt;
+            &lt;RelationshipTypes&gt;
+                &lt;RelationshipType ID="CGSERVICE_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.Service" /&gt;
+                &lt;/RelationshipType&gt;
+                &lt;RelationshipType ID="CGDA_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment"&gt;
+                    &lt;Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#" /&gt;
+                    &lt;Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" /&gt;
+                &lt;/RelationshipType&gt;
+            &lt;/RelationshipTypes&gt;
+        &lt;/EntityTypes&gt;
+    &lt;/TypeDefinitions&gt;
+    &lt;Monitoring&gt;
+        &lt;Discoveries&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGDA_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+            &lt;Discovery ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" ConfirmDelivery="false" Remotable="true" Priority="Normal"&gt;
+                &lt;Category&gt;Discovery&lt;/Category&gt;
+                &lt;DiscoveryTypes /&gt;
+                &lt;DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator"&gt;
+                    &lt;RuleId&gt;$MPElement$&lt;/RuleId&gt;
+                    &lt;GroupInstanceId&gt;$Target/Id$&lt;/GroupInstanceId&gt;
+                    &lt;MembershipRules&gt;
+                        &lt;MembershipRule&gt;
+                            &lt;MonitoringClass&gt;$MPElement[Name="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.Service"]$&lt;/MonitoringClass&gt;
+                            &lt;RelationshipClass&gt;$MPElement[Name="CGSERVICE_#MANAGEMENTPACK_SHORTNAME#"]$&lt;/RelationshipClass&gt;
+                            #SERVICE_INCLUDELIST#
+                        &lt;/MembershipRule&gt;
+                    &lt;/MembershipRules&gt;
+                &lt;/DataSource&gt;
+            &lt;/Discovery&gt;
+        &lt;/Discoveries&gt;
+    &lt;/Monitoring&gt;
+    &lt;Presentation&gt;
+        &lt;Views&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.ServiceStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.StateViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+                &lt;Criteria&gt;
+                    &lt;InMaintenanceMode&gt;false&lt;/InMaintenanceMode&gt;
+                &lt;/Criteria&gt;
+            &lt;/View&gt;
+            &lt;View ID="#MANAGEMENTPACK_ID#.DiagramStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.DiagramViewType" Visible="true"&gt;
+                &lt;Category&gt;Operations&lt;/Category&gt;
+            &lt;/View&gt;
+        &lt;/Views&gt;
+        &lt;Folders&gt;
+            &lt;Folder ID="FIN.DA.VIEWFOLDER.ViewFolder" Accessibility="Public" ParentFolder="FinanceCustomisation!FIN.DistributedApplications.Core.ViewFolder" /&gt;
+        &lt;/Folders&gt;
+        &lt;FolderItems&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.ServiceStateView" ID="#MANAGEMENTPACK_ID#.ServiceStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+            &lt;FolderItem ElementID="#MANAGEMENTPACK_ID#.DiagramStateView" ID="#MANAGEMENTPACK_ID#.DiagramStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" /&gt;
+        &lt;/FolderItems&gt;
+    &lt;/Presentation&gt;
+    &lt;LanguagePacks&gt;
+        &lt;LanguagePack ID="ENU" IsDefault="true"&gt;
+            &lt;DisplayStrings&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#"&gt;
+                    &lt;Name&gt;#MANAGEMENTPACK_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;This management pack defines the #SERVICE_NAME# Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Component Group&lt;/Name&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation"&gt;
+                    &lt;Name&gt;Distributed Application Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Components are members of this Distributed Application.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation"&gt;
+                    &lt;Name&gt;Component Membership Discovery&lt;/Name&gt;
+                    &lt;Description&gt;This discovery will find which Objects are members of this Component.&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.ServiceStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service State&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service State View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="#MANAGEMENTPACK_ID#.DiagramStateView"&gt;
+                    &lt;Name&gt;#SERVICE_NAME# Service Diagram&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME# Service Diagram View&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+                &lt;DisplayString ElementID="FIN.DA.VIEWFOLDER.ViewFolder"&gt;
+                    &lt;Name&gt;#SERVICE_NAME#&lt;/Name&gt;
+                    &lt;Description&gt;#SERVICE_NAME#&lt;/Description&gt;
+                &lt;/DisplayString&gt;
+            &lt;/DisplayStrings&gt;
+        &lt;/LanguagePack&gt;
+    &lt;/LanguagePacks&gt;
+&lt;/ManagementPack&gt;</Value>
+    </Setting>
+    <Setting Name="vCenter_SecondaryDatabaseConnection" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=CORPSQLPRD011;Database=VMWARE_VCDB;Trusted_Connection=true;</Value>
+    </Setting>
+    <Setting Name="PrimaryvCenterSiteName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PDC</Value>
+    </Setting>
+    <Setting Name="SecondaryvCenterSiteName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SDC</Value>
+    </Setting>
+    <Setting Name="Restore_IncludeOptionalServicesWhenCalculatingRestoreTimes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="iServer_BusinessApplicationID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">312</Value>
+    </Setting>
+    <Setting Name="iServer_ServerID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">314</Value>
+    </Setting>
+    <Setting Name="iServer_DrawingID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">571</Value>
+    </Setting>
+    <Setting Name="Restore_StreamAServicePrerequisite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[None]</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBServicePrerequisite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[None]</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCServicePrerequisite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[None]</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDServicePrerequisite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[None]</Value>
+    </Setting>
+    <Setting Name="Restore_StreamEServicePrerequisite" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[None]</Value>
+    </Setting>
+    <Setting Name="ViewStreamDependenciesAsComponents" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="iServer_InScopeAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D29C2600-F53E-4B25-8F4A-818FC7656FAE</Value>
+    </Setting>
+    <Setting Name="ShowInScopeServicesOnly" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="P2P_LocalDBConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=(localdb)\v11.0;Integrated Security=true;AttachDbFileName=#APPPATH#\DRPlanningTool.mdf;</Value>
+    </Setting>
+    <Setting Name="Security_DependencyDatabaseReadGroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">USR - iServerDB Read Access for DR Tool</Value>
+    </Setting>
+    <Setting Name="Security_DependencyDatabaseWriteGroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">USR - iServerDB Write Access for DR Tool</Value>
+    </Setting>
+    <Setting Name="P2PEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RestrictFeaturesByGroupMembership" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="iServer_GetDatabaseVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT TOP 1 DBVersion FROM DBVersion ORDER BY DateUpgraded DESC</Value>
+    </Setting>
+    <Setting Name="iServer33400_GetDrawingsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT Drawing.ObjectID                 AS DrawingID
+     , Drawing.CurrentVersionID         AS DrawingVersionID
+     , Drawing.ObjectName               AS DrawingName
+     , Drawing.ObjectDescription        AS DrawingDescription
+     , Version.SystemVersionNo          AS DrawingVersion
+     , PagePreviews.PagePreviewImage    AS DrawingImage
+     , CASE ISNULL(DrawingStatus.ValueText, -1)
+          WHEN -1 THEN 'N/A'
+          WHEN 0  THEN 'Draft'
+          WHEN 1  THEN 'Pending Review'
+          WHEN 2  THEN 'Approved'
+          ELSE DrawingStatus.ValueText
+        END                             AS DrawingStatus
+     , DrawingFocusedService.ValueText  AS DrawingFocusedServiceName
+     , LastDrawingUpdate.AttributeValue AS LastUpdate
+     , Version.Notes
+FROM Object Drawing
+INNER JOIN vwObject v ON Drawing.ObjectID = v.ObjectID
+INNER JOIN (SELECT v.ObjectID
+                 , MAX(v.SystemVersionNo) AS SystemVersionNo
+                 , o.CurrentVersionId AS ID
+            FROM Object AS o 
+            INNER JOIN Version AS v ON o.ObjectID = v.ObjectID
+            GROUP BY v.ObjectID, o.CurrentVersionId 
+           ) AS Version                         ON v.CurrentVersionId                = Version.ID
+INNER JOIN VisioPagePreviews PagePreviews       ON PagePreviews.ObjectID             = Version.ObjectId   AND PagePreviews.VersionId            = Version.ID
+INNER JOIN AttributeValue DrawingStatus         ON DrawingStatus.AttributeId         = '#DRAWINGSTATUS#'  AND DrawingStatus.VersionId           = Version.ID
+INNER JOIN AttributeValue LastDrawingUpdate     ON LastDrawingUpdate.AttributeId     = '#LASTUPDATE#'     AND LastDrawingUpdate.VersionId           = Drawing.ObjectVersionId
+INNER JOIN AttributeValue DrawingFocusedService ON DrawingFocusedService.AttributeId = '#FOCUSEDSERVICE#' AND DrawingFocusedService.VersionId   = Version.ID
+WHERE v.TypeId           = #DRAWINGID# AND 
+      Drawing.DeleteFlag = 0   AND 
+      v.ObjectParentID   = '#DOCUMENTROOTID#'
+ORDER BY Drawing.ObjectName</Value>
+    </Setting>
+    <Setting Name="iServer33400_GetFocusedBusinessApplicationFromDrawingQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT ObjectID
+     , ObjectName
+     , ObjectDescription
+     , CurrentVersionId
+FROM vwObject v 
+WHERE v.ObjectName LIKE '#FOCUSEDSERVICENAME#' 
+  AND v.TypeId = #BusinessApplicationID#</Value>
+    </Setting>
+    <Setting Name="iServer33400_GetBusinessApplicationDetailsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT DISTINCT Service.ObjectID             AS ServiceID
+     , ObjectName                            AS ServiceName
+     , ObjectDescription                     AS ServiceDescription
+     , CurrentVersionId                      AS ServiceVersionID
+     , Service.SystemVersionNo               AS ServiceVersion
+     , Tier.ValueBigInt                      AS Tier
+     --, ShowInRunbook.ValueBigInt             AS ShowInRunbook
+     , RunbookOrder.ValueBigInt              AS RunbookOrder
+     , ServiceDisplayName.ValueText          AS ServiceDisplayName
+     , ShowInServiceCatalogue.ValueBigInt    AS ShowInServiceCatalogue
+     , SubService.ValueBigInt                AS SubService
+     , InScope.ValueBigInt                   AS InScope
+FROM vwObject Service
+INNER JOIN (SELECT v.ObjectID
+                 , MAX(v.SystemVersionNo) AS SystemVersionNo
+                 , o.CurrentVersionId AS ID
+            FROM Object AS o 
+            INNER JOIN Version AS v ON o.ObjectID = v.ObjectID
+            GROUP BY v.ObjectID, o.CurrentVersionId 
+           ) AS Version                         ON Service.CurrentVersionId =         Version.ID  
+LEFT JOIN AttributeValue Stream                 ON Stream.VersionId =                 Service.CurrentVersionId AND Stream.AttributeId =                 '#STREAM#'
+LEFT JOIN AttributeValue Tier                   ON Tier.VersionId =                   Service.CurrentVersionId AND Tier.AttributeId =                   '#TIER#'
+--LEFT JOIN AttributeValue ShowInRunbook          ON ShowInRunbook.VersionId =          Service.CurrentVersionId AND ShowInRunbook.AttributeId =          '#SHOWINRUNBOOK#'
+LEFT JOIN AttributeValue RunbookOrder           ON RunbookOrder.VersionId =           Service.CurrentVersionId AND RunbookOrder.AttributeId =           '#RUNBOOKORDER#'
+LEFT JOIN AttributeValue ServiceDisplayName     ON ServiceDisplayName.VersionId =     Service.CurrentVersionId AND ServiceDisplayName.AttributeId =     '#SERVICEDISPLAYNAME#'
+LEFT JOIN AttributeValue ShowInServiceCatalogue ON ShowInServiceCatalogue.VersionId = Service.CurrentVersionId AND ShowInServiceCatalogue.AttributeId = '#SHOWINSERVICECATALOG#'
+LEFT JOIN AttributeValue SubService             ON SubService.VersionId =             Service.CurrentVersionId AND SubService.AttributeId =             '#SUBSERVICE#'
+LEFT JOIN AttributeValue InScope                ON InScope.VersionId =                Service.CurrentVersionId AND InScope.AttributeId =                '#INSCOPE#'
+WHERE (Service.LibraryId = '00000000-0000-0000-0000-000000000000') 
+  AND (Service.IsDeleted = 0) 
+  AND (Service.TypeId    = #BusinessApplicationID#) 
+  AND (Service.ObjectID  = '#SERVICEID#')</Value>
+    </Setting>
+    <Setting Name="iServer33400_GetServerDetailsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT n.ObjectID
+     , n.Server
+     , avt.ValueText AS Site 
+     , Stream.ValueText AS Stream
+     , InScope.ValueBigInt AS InScope
+     , Virtual.ValueBigInt AS Virtual
+FROM AttributeValue AS avt 
+INNER JOIN ( SELECT DISTINCT o.ObjectID
+                           , o.ObjectName AS Server
+                           , o.ObjectDescription AS Description
+                           , v.SystemVersionNo
+                           , v.ID 
+             FROM dbo.vwObject AS o 
+             INNER JOIN (SELECT v.ObjectID
+                              , MAX(v.SystemVersionNo) AS SystemVersionNo
+                              , o.CurrentVersionId AS ID
+                         FROM Object AS o 
+                         INNER JOIN Version AS v ON o.ObjectID = v.ObjectID
+                         GROUP BY v.ObjectID, o.CurrentVersionId
+                        ) AS v ON o.CurrentVersionId = v.ID 
+             WHERE (o.LibraryId = '00000000-0000-0000-0000-000000000000') 
+               AND (o.IsDeleted = 0) 
+               AND (o.TypeId = #SERVERID#) 
+           ) AS n ON avt.AttributeId = '#PHYSICALSITE#' AND avt.ObjectId = n.ObjectID AND n.ID = avt.VersionId 
+LEFT JOIN AttributeValue Stream ON Stream.VersionId = n.ID AND Stream.AttributeId = '#STREAM#'
+LEFT JOIN AttributeValue InScope ON Stream.VersionId = n.ID AND InScope.AttributeId = '#INSCOPE#'
+LEFT JOIN AttributeValue Virtual ON Stream.VersionId = n.ID AND Virtual.AttributeId = '#VIRTUAL#'
+ORDER BY SERVER</Value>
+    </Setting>
+    <Setting Name="iServer33400_RelationshipsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT r.RelationshipId 
+      ,r.FromObjectId 
+      ,r.ToObjectId 
+      ,o2.ObjectName AS Service 
+      ,v.ObjectName AS ComponentName 
+      ,r.RelationReason AS Description 
+      ,v.TypeId 
+      ,v.ObjectDescription AS ComponentDescription 
+      ,v.CurrentVersionId AS VersionID 
+      --,a.ValueBigInt AS ShowInRunbook 
+      ,c.ValueBigInt AS RunbookOrder
+      ,m.ValueBigInt AS Mandatory 
+FROM dbo.Relation AS r 
+LEFT OUTER JOIN dbo.vwObject AS v  ON r.ToObjectId     = v.ObjectID 
+LEFT OUTER JOIN dbo.Object   AS o2 ON r.FromObjectId   = o2.ObjectID 
+LEFT OUTER JOIN RelationType AS rt ON r.RelationTypeId = rt.RelationTypeID 
+LEFT OUTER JOIN Object o ON r.RelationshipId = o.ObjectId 
+--LEFT OUTER JOIN AttributeValue a ON a.ObjectId = v.ObjectID AND a.AttributeId = '#SHOWINRUNBOOK#' AND a.VersionId = v.CurrentVersionId 
+LEFT OUTER JOIN AttributeValue c ON c.ObjectId = v.ObjectID AND c.AttributeId = '#RUNBOOKORDER#' AND c.VersionId = v.CurrentVersionId 
+LEFT OUTER JOIN AttributeValue m ON m.ObjectId = o.ObjectID AND m.AttributeId = '#MANDATORY#'
+WHERE (r.FromObjectId LIKE '#OBJECTID#')</Value>
+    </Setting>
+    <Setting Name="iServer_DatabaseVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">23307</Value>
+    </Setting>
+    <Setting Name="iServer_LastUpdateAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E2A4F6ED-5764-46E5-B862-CE8982CD2C35</Value>
+    </Setting>
+    <Setting Name="ShowDebugInformation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="frmMainSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmMainLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmBusinessApplicationSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmBusinessApplicationLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmServerSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmServerLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmListSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmListLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmInformationSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmInformationLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmProgressSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmProgressLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmDependencyMapSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmDependencyMapLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowExperimentalFeatures" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowServersOnFullDependencyMap" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowStatesOnDependencyMaps" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="frmBusinessApplicationImageSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmBusinessApplicationImageLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="FormOpenXOffset" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="FormOpenYOffset" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="iServer_VirtualAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">74CB39F9-FC2D-495C-B752-50031FF803B1</Value>
+    </Setting>
+    <Setting Name="Restore_OverallOverheadTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamAOverheadTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamBOverheadTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamCOverheadTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamDOverheadTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="Restore_StreamEOverheadTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
+    <Setting Name="frmValidationRulesLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmValidationRulesSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="SettingsFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\YourFileServer\YourShare\Architecture\Disaster Recovery\Settings\DR Planning Tool\DRPTConfig.mdf</Value>
+    </Setting>
+    <Setting Name="iServer23307_GetHARelationshipsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT r.RelationshipId 
+      ,r.FromObjectId 
+      ,r.ToObjectId 
+      ,o2.ObjectName AS Server1  
+      ,v.ObjectName AS Server2   
+      ,v.ObjectVersionId AS VersionID  
+      ,m.AttributeValue AS Mandatory 
+      ,h.AttributeValue AS HAGroupName
+FROM dbo.Relation AS r 
+LEFT OUTER JOIN dbo.vwObject AS v ON r.ToObjectId = v.ObjectID  
+LEFT OUTER JOIN dbo.Object AS o2 ON r.FromObjectId = o2.ObjectID  
+LEFT OUTER JOIN dbo.RelationDocument AS rd ON r.RelationshipId = rd.RelationshipId
+LEFT OUTER JOIN RelationType rt ON r.RelationTypeId = rt.RelationTypeID 
+LEFT OUTER JOIN Object o3 ON rd.DocumentId = o3.ObjectID
+LEFT OUTER JOIN Timestamp t ON t.TimestampId = r.TimestampId  
+LEFT OUTER JOIN Object o ON r.RelationshipId = o.ObjectId  
+LEFT OUTER JOIN AttributeValueBigInt c ON c.ObjectId = v.ObjectID AND c.AttributeId = '#RUNBOOKORDER#' AND c.VersionId = v.ObjectVersionId 
+LEFT OUTER JOIN AttributeValueBigInt m ON m.ObjectId = o.ObjectID AND m.AttributeId = '#MANDATORY#'
+LEFT OUTER JOIN AttributeValueText h ON h.ObjectID = o.ObjectID AND h.AttributeID = '#HAGROUPNAME#'
+WHERE (r.DeleteFlag = 0) AND rd.DocumentId = '#DRAWINGID#' AND
+      (
+       r.FromObjectId IN (
+                          #INCLUDELIST#
+                         )
+      )</Value>
+    </Setting>
+    <Setting Name="iServer33400_GetHARelationshipsQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT r.RelationshipId 
+      ,r.FromObjectId 
+      ,r.ToObjectId 
+      ,o2.ObjectName AS Server1  
+      ,v.ObjectName AS Server2   
+      ,v.ObjectVersionId AS VersionID  
+      ,m.AttributeValue AS Mandatory 
+FROM dbo.Relation AS r 
+LEFT OUTER JOIN dbo.vwObject AS v ON r.ToObjectId = v.ObjectID  
+LEFT OUTER JOIN dbo.Object AS o2 ON r.FromObjectId = o2.ObjectID  
+LEFT OUTER JOIN RelationType rt ON r.RelationTypeId = rt.RelationTypeID 
+LEFT OUTER JOIN Timestamp t ON t.TimestampId = r.TimestampId  
+LEFT OUTER JOIN Object o ON r.RelationshipId = o.ObjectId  
+LEFT OUTER JOIN AttributeValueBigInt c ON c.ObjectId = v.ObjectID AND c.AttributeId = '#RUNBOOKORDER#' AND c.VersionId = v.ObjectVersionId 
+LEFT OUTER JOIN AttributeValueBigInt m ON m.ObjectId = o.ObjectID AND m.AttributeId = '#MANDATORY#'
+WHERE (r.DeleteFlag = 0) AND
+      (
+       r.FromObjectId IN (
+                          #INCLUDELIST#
+                         )
+      )</Value>
+    </Setting>
+    <Setting Name="iServer_HighlyAvailableAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">B08641FE-FD5E-4E06-9D04-495A94F34246</Value>
+    </Setting>
+    <Setting Name="Security_vCenterSQLReadGroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLServerQueryTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="iServer_HAGroupNameAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">74C24CBD-4E67-4DEC-A8F0-A9D6E10171BD</Value>
+    </Setting>
+    <Setting Name="SystemCenter_ManagementPackViewFolderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Finance Distributed Applications</Value>
+    </Setting>
+    <Setting Name="iServer_AddToMPAttributeID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DBD27C6E-9156-4E0D-8D3C-27EC3A75FDD2</Value>
+    </Setting>
+    <Setting Name="DataLayerType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Tier0RTOMinimum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Tier1RTOMinimum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="Tier2RTOMinimum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
+    <Setting Name="Tier3RTOMinimum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">48</Value>
+    </Setting>
+    <Setting Name="Tier4RTOMinimum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">504</Value>
+    </Setting>
+    <Setting Name="Tier0RTOMaximum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="Tier1RTOMaximum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
+    <Setting Name="Tier2RTOMaximum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">48</Value>
+    </Setting>
+    <Setting Name="Tier3RTOMaximum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">504</Value>
+    </Setting>
+    <Setting Name="Tier4RTOMaximum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9999</Value>
+    </Setting>
+    <Setting Name="Rule_StreamATier0" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamBTier0" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamCTier0" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamDTier0" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamETier0" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamATier1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamBTier1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamCTier1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamDTier1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamETier1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamATier2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamBTier2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamCTier2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamDTier2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamETier2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamATier3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamBTier3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamCTier3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamDTier3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamETier3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamATier4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamBTier4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamCTier4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Rule_StreamDTier4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_StreamETier4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FlagDrawingErrors" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LocalSettingsFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LocalDBConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=(LocalDB)\v11.0;AttachDbFilename=#LOCALDBFILENAME#.mdf;Integrated Security=True;Connect Timeout=30</Value>
+    </Setting>
+    <Setting Name="SystemCenter_TestSCOMServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CORPSCOMTST001</Value>
+    </Setting>
+    <Setting Name="SystemCenter_DevSCOMServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SystemCenter_TestSCSMServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CORPSCSMTST001</Value>
+    </Setting>
+    <Setting Name="SystemCenter_DevSCSMServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CORPSCSMDEV001</Value>
+    </Setting>
+    <Setting Name="General_MDIInterface" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="frmMDIMainSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1024, 768</Value>
+    </Setting>
+    <Setting Name="frmMDIMainLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmDrawingsSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="frmDrawingsLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

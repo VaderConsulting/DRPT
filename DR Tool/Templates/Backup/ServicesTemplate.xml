@@ -1,0 +1,143 @@
+<ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <Manifest>
+        <Identity>
+            <ID>#MANAGEMENTPACK_ID#</ID>
+            <Version>#MANAGEMENTPACK_VERSION#</Version>
+        </Identity>
+        <Name>#MANAGEMENTPACK_NAME#</Name>
+        <References>
+            <Reference Alias="SystemCenter">
+                <ID>Microsoft.SystemCenter.Library</ID>
+                <Version>7.0.8432.0</Version>
+                <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+            </Reference>
+            <Reference Alias="MicrosoftSystemCenterServiceDesignerLibrary7084320">
+                <ID>Microsoft.SystemCenter.ServiceDesigner.Library</ID>
+                <Version>7.0.8432.0</Version>
+                <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+            </Reference>
+            <Reference Alias="SystemLibrary7585010">
+                <ID>System.Library</ID>
+                <Version>7.5.8501.0</Version>
+                <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+            </Reference>
+            <Reference Alias="SystemHealthLibrary7084320">
+                <ID>System.Health.Library</ID>
+                <Version>7.0.8432.0</Version>
+                <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+            </Reference>
+            <Reference Alias="Image">
+                <ID>System.Image.Library</ID>
+                <Version>7.5.8501.0</Version>
+                <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+            </Reference>
+        </References>
+    </Manifest>
+    <TypeDefinitions>
+        <EntityTypes>
+            <ClassTypes>
+                <ClassType ID="#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.GenericService" Hosted="false" Singleton="true" Extension="false" />
+                <ClassType ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" Accessibility="Public" Abstract="false" Base="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.ServiceComponentGroup" Hosted="false" Singleton="true" Extension="false" />
+            </ClassTypes>
+            <RelationshipTypes>
+                <RelationshipType ID="CGSERVICE_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment">
+                    <Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" />
+                    <Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.Service" />
+                </RelationshipType>
+                <RelationshipType ID="CGDA_#MANAGEMENTPACK_SHORTNAME#" Accessibility="Public" Abstract="false" Base="SystemLibrary7585010!System.Containment">
+                    <Source ID="source" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#" />
+                    <Target ID="target" MinCardinality="0" MaxCardinality="2147483647" Type="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" />
+                </RelationshipType>
+            </RelationshipTypes>
+        </EntityTypes>
+    </TypeDefinitions>
+    <Monitoring>
+        <Discoveries>
+            <Discovery ID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+                <Category>Discovery</Category>
+                <DiscoveryTypes />
+                <DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator">
+                    <RuleId>$MPElement$</RuleId>
+                    <GroupInstanceId>$Target/Id$</GroupInstanceId>
+                    <MembershipRules>
+                        <MembershipRule>
+                            <MonitoringClass>$MPElement[Name="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup"]$</MonitoringClass>
+                            <RelationshipClass>$MPElement[Name="CGDA_#MANAGEMENTPACK_SHORTNAME#"]$</RelationshipClass>
+                        </MembershipRule>
+                    </MembershipRules>
+                </DataSource>
+            </Discovery>
+            <Discovery ID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+                <Category>Discovery</Category>
+                <DiscoveryTypes />
+                <DataSource ID="DS" TypeID="SystemCenter!Microsoft.SystemCenter.GroupPopulator">
+                    <RuleId>$MPElement$</RuleId>
+                    <GroupInstanceId>$Target/Id$</GroupInstanceId>
+                    <MembershipRules>
+                        <MembershipRule>
+                            <MonitoringClass>$MPElement[Name="MicrosoftSystemCenterServiceDesignerLibrary7084320!Microsoft.SystemCenter.ServiceDesigner.Service"]$</MonitoringClass>
+                            <RelationshipClass>$MPElement[Name="CGSERVICE_#MANAGEMENTPACK_SHORTNAME#"]$</RelationshipClass>
+                            #SERVICE_INCLUDELIST#
+                        </MembershipRule>
+                    </MembershipRules>
+                </DataSource>
+            </Discovery>
+        </Discoveries>
+    </Monitoring>
+    <Presentation>
+        <Views>
+            <View ID="#MANAGEMENTPACK_ID#.ServiceStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.StateViewType" Visible="true">
+                <Category>Operations</Category>
+                <Criteria>
+                    <InMaintenanceMode>false</InMaintenanceMode>
+                </Criteria>
+            </View>
+            <View ID="#MANAGEMENTPACK_ID#.DiagramStateView" Accessibility="Public" Enabled="true" Target="#MANAGEMENTPACK_SHORTNAME#" TypeID="SystemCenter!Microsoft.SystemCenter.DiagramViewType" Visible="true">
+                <Category>Operations</Category>
+            </View>
+        </Views>
+        <Folders>
+            <Folder ID="FIN.DA.VIEWFOLDER.ViewFolder" Accessibility="Public" ParentFolder="SystemCenter!Microsoft.SystemCenter.Monitoring.ViewFolder.Root" />
+        </Folders>
+        <FolderItems>
+            <FolderItem ElementID="#MANAGEMENTPACK_ID#.ServiceStateView" ID="#MANAGEMENTPACK_ID#.ServiceStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" />
+            <FolderItem ElementID="#MANAGEMENTPACK_ID#.DiagramStateView" ID="#MANAGEMENTPACK_ID#.DiagramStateView" Folder="FIN.DA.VIEWFOLDER.ViewFolder" />
+        </FolderItems>
+    </Presentation>
+    <LanguagePacks>
+        <LanguagePack ID="ENU" IsDefault="true">
+            <DisplayStrings>
+                <DisplayString ElementID="#MANAGEMENTPACK_ID#">
+                    <Name>#MANAGEMENTPACK_NAME#</Name>
+                    <Description>This management pack defines the #SERVICE_NAME# Distributed Application.</Description>
+                </DisplayString>
+                <DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#">
+                    <Name>#SERVICE_NAME#</Name>
+                </DisplayString>
+                <DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup">
+                    <Name>#SERVICE_NAME# Component Group</Name>
+                </DisplayString>
+                <DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_SCPopulation">
+                    <Name>Distributed Application Membership Discovery</Name>
+                    <Description>This discovery will find which Components are members of this Distributed Application.</Description>
+                </DisplayString>
+                <DisplayString ElementID="#MANAGEMENTPACK_SHORTNAME#_ComponentGroup_ItemPopulation">
+                    <Name>Component Membership Discovery</Name>
+                    <Description>This discovery will find which Objects are members of this Component.</Description>
+                </DisplayString>
+                <DisplayString ElementID="#MANAGEMENTPACK_ID#.ServiceStateView">
+                    <Name>#MANAGEMENTPACK_ID# Service State View</Name>
+                    <Description>#MANAGEMENTPACK_ID# Service State View</Description>
+                </DisplayString>
+                <DisplayString ElementID="#MANAGEMENTPACK_ID#.DiagramStateView">
+                    <Name>#MANAGEMENTPACK_ID# Service Diagram View</Name>
+                    <Description>#MANAGEMENTPACK_ID# Service Diagram View</Description>
+                </DisplayString>
+                <DisplayString ElementID="FIN.DA.VIEWFOLDER.ViewFolder">
+                    <Name>#MANAGEMENTPACK_FOLDERNAME#</Name>
+                    <Description>#MANAGEMENTPACK_ID# View Folder</Description>
+                </DisplayString>
+            </DisplayStrings>
+        </LanguagePack>
+    </LanguagePacks>
+</ManagementPack>

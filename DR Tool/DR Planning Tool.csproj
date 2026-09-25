@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AEA8289-5E88-4F18-AEA7-4B43A28E37D6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DRPlanningTool</RootNamespace>
+    <AssemblyName>DR Planning Tool</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>realvista_projectmanagment_risk_management_plan.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rajeev.Windows.Forms">
+      <HintPath>..\..\Libraries\ReadOnlyPropertyGrid\Rajeev.Windows.Forms\bin\Debug\Rajeev.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ErrorCode.cs" />
+    <Compile Include="Forms\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmActivities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmActivities.Designer.cs">
+      <DependentUpon>frmActivities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDatabaseUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDatabaseUpdate.Designer.cs">
+      <DependentUpon>frmDatabaseUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDependencyMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDependencyMap.Designer.cs">
+      <DependentUpon>frmDependencyMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDisks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDisks.Designer.cs">
+      <DependentUpon>frmDisks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDrawings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDrawings.Designer.cs">
+      <DependentUpon>frmDrawings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEnvironment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEnvironment.Designer.cs">
+      <DependentUpon>frmEnvironment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMDIMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMDIMain.Designer.cs">
+      <DependentUpon>frmMDIMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMessageCodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMessageCodes.Designer.cs">
+      <DependentUpon>frmMessageCodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOptionSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOptionSetting.Designer.cs">
+      <DependentUpon>frmOptionSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRecoveryEstimates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecoveryEstimates.Designer.cs">
+      <DependentUpon>frmRecoveryEstimates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRecoveryTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecoveryTasks.Designer.cs">
+      <DependentUpon>frmRecoveryTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmServer.Designer.cs">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBusinessApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBusinessApplication.Designer.cs">
+      <DependentUpon>frmBusinessApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBusinessApplicationImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBusinessApplicationImage.Designer.cs">
+      <DependentUpon>frmBusinessApplicationImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmShares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmShares.Designer.cs">
+      <DependentUpon>frmShares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmShowNotInScopeServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmShowNotInScopeServices.Designer.cs">
+      <DependentUpon>frmShowNotInScopeServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSimulation.Designer.cs">
+      <DependentUpon>frmSimulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSystemCenterQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSystemCenterQuery.Designer.cs">
+      <DependentUpon>frmSystemCenterQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInformation.Designer.cs">
+      <DependentUpon>frmInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IDrawingForm.cs" />
+    <Compile Include="IMainForm.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmActivities.resx">
+      <DependentUpon>frmActivities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDatabaseUpdate.resx">
+      <DependentUpon>frmDatabaseUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDependencyMap.resx">
+      <DependentUpon>frmDependencyMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDisks.resx">
+      <DependentUpon>frmDisks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDrawings.resx">
+      <DependentUpon>frmDrawings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEnvironment.resx">
+      <DependentUpon>frmEnvironment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMDIMain.resx">
+      <DependentUpon>frmMDIMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMessageCodes.resx">
+      <DependentUpon>frmMessageCodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOptionSetting.resx">
+      <DependentUpon>frmOptionSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecoveryEstimates.resx">
+      <DependentUpon>frmRecoveryEstimates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecoveryTasks.resx">
+      <DependentUpon>frmRecoveryTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmServer.resx">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBusinessApplication.resx">
+      <DependentUpon>frmBusinessApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBusinessApplicationImage.resx">
+      <DependentUpon>frmBusinessApplicationImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmShares.resx">
+      <DependentUpon>frmShares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmShowNotInScopeServices.resx">
+      <DependentUpon>frmShowNotInScopeServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSimulation.resx">
+      <DependentUpon>frmSimulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSystemCenterQuery.resx">
+      <DependentUpon>frmSystemCenterQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInformation.resx">
+      <DependentUpon>frmInformation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\ISA.CommandLine\ISA.CommandLine.csproj">
+      <Project>{158a8806-c478-4341-922f-c64ab1d00aa7}</Project>
+      <Name>ISA.CommandLine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\ISA.Database\ISA.Database.csproj">
+      <Project>{f44f61fd-07f6-42ef-af53-1152cfbcc59f}</Project>
+      <Name>ISA.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\ISA.DataLayer\ISA.DataLayer.csproj">
+      <Project>{e63fe536-1a80-48ca-a853-68be30aaf768}</Project>
+      <Name>ISA.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\ISA.Helper\ISA.Helper.csproj">
+      <Project>{ba53ce7f-858d-46ae-81c9-a88b9a730130}</Project>
+      <Name>ISA.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\Microsoft.AGL\Drawing\Microsoft.AGL.Drawing.csproj">
+      <Project>{b76f8f71-4b00-4242-be36-c9f0732511f7}</Project>
+      <Name>Microsoft.AGL.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\Microsoft.AGL\Microsoft.AGL\Microsoft.AGL.csproj">
+      <Project>{415d3e3f-7105-46c1-84d2-7ecb34213d92}</Project>
+      <Name>Microsoft.AGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\Microsoft.AGL\tools\GraphViewerGDI\Microsoft.AGL.GraphViewerGdi.csproj">
+      <Project>{725cd2cb-cf37-414e-a5a6-f1d87d4d6ede}</Project>
+      <Name>Microsoft.AGL.GraphViewerGdi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISA.Orbus\ISA.Orbus.csproj">
+      <Project>{a5d02861-9ed6-478b-b73a-6bfe8de9a128}</Project>
+      <Name>ISA.Orbus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISA.SystemCenter\ISA.SystemCenter.csproj">
+      <Project>{12a7d52c-07e8-4ac1-9590-2d547fb90532}</Project>
+      <Name>ISA.SystemCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISA.Dependency\ISA.Dependency.csproj">
+      <Project>{2ed411fe-cdd4-4cff-82f3-cc172e1659aa}</Project>
+      <Name>ISA.Dependency</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Create Config Tables.sql" />
+    <Content Include="Database\DRPTConfig.mdf" />
+    <Content Include="Database\DRPTConfig_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>DRPTConfig.mdf</DependentUpon>
+    </Content>
+    <Content Include="Database\DRPTConfig_SQL2014_old.mdf" />
+    <Content Include="Database\DRPTConfig_SQL2014_old_log.ldf">
+      <DependentUpon>DRPTConfig_SQL2014_old.mdf</DependentUpon>
+    </Content>
+    <Content Include="Database\Populate Default Config data.sql" />
+    <Content Include="ErrorCodes.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ErrorCodeSchema.xml" />
+    <Content Include="Licenses\MSAGL License.txt" />
+    <Content Include="realvista_projectmanagment_risk_management_plan.ico" />
+    <None Include="Resources\clock_32.png" />
+    <None Include="Resources\Globe_32.png" />
+    <None Include="Resources\Warning.png" />
+    <None Include="Resources\Close_32.png" />
+    <None Include="Resources\Close_16.png" />
+    <None Include="Resources\Ok_16.png" />
+    <None Include="Resources\Blueprint_blue_32.png" />
+    <None Include="Resources\Box_32.png" />
+    <None Include="Resources\Box_full_32.png" />
+    <None Include="Resources\Box_empty_32.png" />
+    <None Include="Resources\stamped_document_32_blue.png" />
+    <None Include="Resources\stamped_document_32_lightblue.png" />
+    <None Include="Resources\stamped_document_32_pink.png" />
+    <None Include="Resources\stamped_document_32_purple.png" />
+    <None Include="Resources\Blueprint_blue_256.png" />
+    <None Include="Resources\Blueprint_green_32.png" />
+    <None Include="Resources\Blueprint_green_256.png" />
+    <None Include="Resources\Blueprint_grey_32.png" />
+    <None Include="Resources\Blueprint_grey_256.png" />
+    <None Include="Resources\Blueprint_none_32.png" />
+    <None Include="Resources\Blueprint_none_256.png" />
+    <None Include="Resources\Blueprint_orange_32.png" />
+    <None Include="Resources\Blueprint_orange_256.png" />
+    <None Include="Resources\Blueprint_red_32.png" />
+    <None Include="Resources\Blueprint_red_256.png" />
+    <None Include="Resources\Server2_blue_32.png" />
+    <None Include="Resources\Server2_green_32.png" />
+    <None Include="Resources\Server2_grey_32.png" />
+    <None Include="Resources\Server2_orange_32.png" />
+    <None Include="Resources\Server2_red_32.png" />
+    <None Include="Resources\gear_black_32.png" />
+    <None Include="Resources\gear_blue_32.png" />
+    <None Include="Resources\gear_green_32.png" />
+    <None Include="Resources\gear_grey_32.png" />
+    <None Include="Resources\gear_orange_32.png" />
+    <None Include="Resources\gear_red_32.png" />
+    <None Include="Resources\database_blue_32.png" />
+    <None Include="Resources\i_32_green.png" />
+    <None Include="Resources\papers_32.png" />
+    <None Include="Resources\papers_256.png" />
+    <None Include="Resources\play_blue_32.png" />
+    <None Include="Resources\supervista_jobsicons_american_16.png" />
+    <None Include="Resources\supervista_jobsicons_american_32.png" />
+    <None Include="Resources\supervista_jobsicons_american_256.png" />
+    <None Include="Resources\supervista_jobsicons_machine_operator_16.png" />
+    <None Include="Resources\supervista_jobsicons_machine_operator_32.png" />
+    <None Include="Resources\supervista_jobsicons_machine_operator_256.png" />
+    <None Include="Resources\supervista_jobsicons_programmer_16.png" />
+    <None Include="Resources\supervista_jobsicons_programmer_32.png" />
+    <None Include="Resources\supervista_jobsicons_programmer_256.png" />
+    <None Include="Resources\ISA Technologies_Logo_128x77.png" />
+    <None Include="Resources\beta_general_stop_32.png" />
+    <None Include="Resources\connect_32_blue.png" />
+    <None Include="Resources\folder_32_blue.png" />
+    <None Include="Resources\i_32_light_blue.png" />
+    <Content Include="Resources\i_32_yellowblack.png" />
+    <None Include="Resources\software_32_close_blue.png" />
+    <None Include="Resources\picture_landscape_close_32_blue.png" />
+    <None Include="Resources\script_32_close_blue.png" />
+    <None Include="Resources\server_32_close_blue.png" />
+    <None Include="Resources\thermometer_32_blue.png" />
+    <Content Include="Templates\Backup\EmptyTemplate.xml" />
+    <Content Include="Templates\Backup\ServersAndServicesTemplate.xml" />
+    <Content Include="Templates\Backup\ServersTemplate.xml" />
+    <Content Include="Templates\Backup\ServicesTemplate.xml" />
+    <Content Include="Templates\EmptyTemplate.xml" />
+    <Content Include="Templates\ServersAndServicesTemplate.xml" />
+    <Content Include="Templates\ServersTemplate.xml" />
+    <Content Include="Templates\ServicesTemplate.xml" />
+    <None Include="Resources\realvista_projectmanagment_risk_management_plan_256.png" />
+    <None Include="Resources\i_32_blue.png" />
+    <None Include="Resources\help_32_blue.png" />
+    <None Include="Resources\audio_equalizer_32.png" />
+    <None Include="Resources\audio_equalizer_256_blue.png" />
+    <None Include="Resources\windows7_general_help_16.png" />
+    <None Include="Resources\windows7_general_help_32.png" />
+    <None Include="Resources\windows7_general_help_256.png" />
+    <None Include="Resources\Flame_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

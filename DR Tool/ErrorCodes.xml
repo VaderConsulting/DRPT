@@ -1,0 +1,1777 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ErrorCodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1001</Code>
+		<Message>[ERR1001] Error adding connection between [Business Application] (Business Application) and new [Server] (Server)</Message>
+		<Cause>Could not add connection between Business Application and new Server.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1002</Code>
+		<Message>[ERR1002] Error adding connection between [Business Application] (Business Application) and existing [Server] (Server)</Message>
+		<Cause>Could not add connection between Business Application and existing Server.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1003</Code>
+		<Message>[ERR1003] Error adding connection between [Business Application] (Business Application) and existing [Server] (Server)</Message>
+		<Cause>Could not add topological connection between Business Application and existing Server.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1004</Code>
+		<Message>[ERR1004] Error adding connection between [Business Application] (Business Application) and existing [Server] (Server)</Message>
+		<Cause>Could not add topological connection between Business Application and existing Server.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1005</Code>
+		<Message>[INF1005] Runbook Region increased due to [Business Application] ([Number])</Message>
+		<Cause>The position of a Component Business Application has meant that the Runbook Region for this Business Application has to be increased.</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1006</Code>
+		<Message>[ERR1006] Relationship between [Business Application] (Business Application) and [Business Application] (Business Application) could not be found.  This should not occur!</Message>
+		<Cause>The Relationship between the two Business Applications could not be found.  This indicates that the internal list of Business Applications has an error.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1007</Code>
+		<Message>[ERR1007 ] [Business Application] (Business Application) cannot be HA, so has been temporarily set to non-HA.  This is due to [Business Application] (Business Application) not being Highly Available</Message>
+		<Cause>The Highly Available property of this Business Application was set to true, but due to the indicated Business Application, this was programmatically set to false.</Cause>
+		<Resolution>Correct either of the drawings to align the two Business Applications</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1008</Code>
+		<Message>[ERR1008] Could not find relationship between [Business Application] (Business Application) and [Server].  This should not occur.</Message>
+		<Cause>The Relationship between the two Business Applications could not be found.  This indicates that the internal list of Business Applications has an error.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1009</Code>
+		<Message>[ERR1009] Topological Sort could not add [Business Application or Server]</Message>
+		<Cause>The indicated component could not be added to the topological sort algorithm</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1010</Code>
+		<Message>[ERR1010] Topological Sort could not create dependency between [Business Application or Server] and [Business Application or Server]</Message>
+		<Cause>A dependency could not be created between the indicated components in the topological sort</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1011</Code>
+		<Message>[ERR1011] CIRCULAR DEPENDENCY FOUND WITH [Business Application or Server]</Message>
+		<Cause>Two or more Drawings depict a circular dependency between one or more components.</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1012</Code>
+		<Message>[ERR1012] Unexpected error: [Error Description]</Message>
+		<Cause>An unexpected error has occurred whilst opening a Connection to the SQL Server</Cause>
+		<Resolution>Check the User has permission to connect to the SQL Server.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1013</Code>
+		<Message>[ERR1013] SQL Exception: [Error Description]</Message>
+		<Cause>An error occurred whilst opening a connection to the SQL Server</Cause>
+		<Resolution>Check the User has permission to connect to the SQL Server.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1014</Code>
+		<Message>[ERR1014] SQL error filling table (Attempt #[Number]).  Retrying...</Message>
+		<Cause>An error occurred whilst executing the SQL Statement</Cause>
+		<Resolution>Contact the Server Team and ensure the SQL Server is ok</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1015</Code>
+		<Message>[ERR1015] SQL Exception: [Error Description]</Message>
+		<Cause>More than 3 errors has occurred whilst attempting to execute the SQL Statement</Cause>
+		<Resolution>Contact the Server Team and ensure the SQL Server is ok</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1016</Code>
+		<Message>[ERR1016] SQL Exception: [Error Description]</Message>
+		<Cause>An error occurred whilst opening a connection to the SQL Server</Cause>
+		<Resolution>Check the User has permission to connect to the SQL Server.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1017</Code>
+		<Message>[ERR1017] SQL Exception: [Error Description]</Message>
+		<Cause>An error occurred whilst executing the SQL Statement</Cause>
+		<Resolution>Contact the Server Team and ensure the SQL Server is ok</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1018</Code>
+		<Message>[ERR1018] SCOM Server is not specified</Message>
+		<Cause>The SCOM Server name is blank</Cause>
+		<Resolution>Ensure the SCOM Server name is specified correctly</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1019</Code>
+		<Message>[ERR1019] Could not create connection to SCOM Server</Message>
+		<Cause>A Connection to the specified SCOM Server could not be established</Cause>
+		<Resolution>Ensure the SCOM Server name is correct and that the User has rights to connect to it</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1020</Code>
+		<Message>[ERR1020] SCSM Server is not specified</Message>
+		<Cause>The SCSM Server name is blank</Cause>
+		<Resolution>Ensure the SCSM Server name is specified correctly</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1021</Code>
+		<Message>[ERR1021] Could not create connection to SCSM Server</Message>
+		<Cause>A Connection to the specified SCSM Server could not be established</Cause>
+		<Resolution>Ensure the SCSM Server name is correct and that the User has rights to connect to it</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1022</Code>
+		<Message>[ERR1022] An error occurred whilst creating the Management Pack.  The exception was: [Error Description]</Message>
+		<Cause>The Management Pack creation request encountered an error.</Cause>
+		<Resolution>Read the Microsoft supplied error description and take appropriate action</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1023</Code>
+		<Message>[ERR1023] Could not add relationship between [Business Application] (Business Application) and [Business Application] (Business Application) on the Dependency Map.  This should not occur!</Message>
+		<Cause>An error occurred whilst adding dependencies to the Dependency Map.</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1024</Code>
+		<Message>[INF1024] User options prevent importing Management Packs into either System Center product</Message>
+		<Cause>User Options prevent import of Management Packs into both SCOM and SCSM</Cause>
+		<Resolution>Configure Options to allow Management Pack import as required</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1025</Code>
+		<Message>[ERR1025] Could not determine iServer Database version. Defaulting to 233.07</Message>
+		<Cause>The iServer Database version could not be determined</Cause>
+		<Resolution>Only iServer Version 233.07 and 334.00 have been tested with this version of the DR Planning Tool.  The DRPT may or may not work.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1026</Code>
+		<Message>[ERR1026] Connected to **UNSUPPORTED** iServer Database version [iServerVersion]</Message>
+		<Cause>The iServer Database version could not be determined, though a connection was established</Cause>
+		<Resolution>Only iServer Version 233.07 and 334.00 have been tested with this version of the DR Planning Tool.  The DRPT may or may not function correctly</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1027</Code>
+		<Message>[ERR1027] A problem was encountered whilst updating or creating a Management Pack</Message>
+		<Cause>An error occurred whilst creating a Management Pack</Cause>
+		<Resolution>Check previous messages for the reason for the error</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1028</Code>
+		<Message>[INF1028] Runbook Region set to [Number]</Message>
+		<Cause>The Runbook Index for this Server has been set to [Number].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1029</Code>
+		<Message>[ERR1029] A problem was encountered whilst updating or creating a Management Pack</Message>
+		<Cause>An error occurred whilst creating a Management Pack</Cause>
+		<Resolution>Review previous messages for the reason for the error</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1030</Code>
+		<Message>[ERR1030] [Business Application] (Business Application): Could not add relationship with [Business Application] (Business Application)</Message>
+		<Cause>An error occurred whilst attempting to add a relationship between the two Business Applications</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1031</Code>
+		<Message>[ERR1031] [Business Application] (Business Application): Could not add relationship with [Server] (Server)</Message>
+		<Cause>An error occurred whilst attempting to add a relationship between the Business Application and Server</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1032</Code>
+		<Message>[INF1032] One or more Business Applications have their In Scope over-ridden.  Reload to reset</Message>
+		<Cause>One or more Business Applications has its In Scope Property over-ridden.  Dependency calculation must be re-calculated.</Cause>
+		<Resolution>Reload the Drawing Set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1033</Code>
+		<Message>[ERR1033] [Business Application]: A Business Application with this name was not found</Message>
+		<Cause>There was a problem loading the Drawing Set</Cause>
+		<Resolution>Ensure the Drawing Set is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1034</Code>
+		<Message>[ERR1034] There was a mismatch between the number of Business Applications and Drawings.  The ratio should be 1:1.  Check that each Drawing has a Focus Drawing Name</Message>
+		<Cause>The number of Drawings and Business Applications should be equal.  This error indicates an inconsistency between the Drawings and Business Applications as a result of database query execution</Cause>
+		<Resolution>Check the iServer Drawing set to ensure the number of Drawings and Business Applications are equal.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1035</Code>
+		<Message>[ERR1035] A problem was encountered whilst updating or creating a Management Pack</Message>
+		<Cause>An error occurred whilst creating a Management Pack</Cause>
+		<Resolution>Review previous messages for the reason for the error</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1036</Code>
+		<Message>[INF1036] [Business Application] (Business Application) Stream is [Recovery Stream]</Message>
+		<Cause>The Recovery Stream for this Business Application has been set to [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1037</Code>
+		<Message>[ERR1037] Could not determine iServer Database version. Defaulting to 233.07</Message>
+		<Cause>The iServer Database version could not be determined</Cause>
+		<Resolution>Only iServer Version 233.07 and 334.00 have been tested with this version of the DR Planning Tool.  The DRPT may or may not work.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1038</Code>
+		<Message>[ERR1038] Could not load Business Application Data from SQL Server</Message>
+		<Cause>The Get Focused Business Application Database Query did not return any results</Cause>
+		<Resolution>Check the Drawing Set is populated</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1039</Code>
+		<Message>[ERR1039] [Business Application] (Business Application): Could not load data for property 'Description'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Description'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1040</Code>
+		<Message>[ERR1040] [Business Application] (Business Application): Could not load data for property 'Version'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Version'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1041</Code>
+		<Message>[ERR1041] [Business Application] (Business Application): Could not load data for property 'Tier'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Tier'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1042</Code>
+		<Message>[ERR1042] [Business Application] (Business Application): Could not load data for property 'Runbook Order'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Runbook Order'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1043</Code>
+		<Message>[ERR1043] [Business Application] (Business Application): Could not load data for property 'Display Name'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Display Name'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1044</Code>
+		<Message>[ERR1044] [Business Application] (Business Application): Could not load data for property 'Show In Service Catalogue'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Show In Service Catalogue'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1045</Code>
+		<Message>[ERR1045] [Business Application] (Business Application): Could not load data for property 'Sub Service'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Sub Service'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1046</Code>
+		<Message>[ERR1046] [Business Application] (Business Application): Could not load data for property 'In Scope'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'In Scope'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1047</Code>
+		<Message>[ERR1047] [Business Application] (Business Application): Could not load data for property 'Highly Available'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Highly Available'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1048</Code>
+		<Message>[ERR1048] Component [Business Application] (Business Application) cannot rely on itself!  You must correct the Drawing</Message>
+		<Cause>Two or more Drawings depict a circular dependency with this Business Application.</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1049</Code>
+		<Message>[ERR1049] Could not add relationship between [Business Application] (Business Application and [Business Application] (Business Application). Check for a circular dependency</Message>
+		<Cause>Two or more Drawings depict a circular dependency with this Business Application.</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1050</Code>
+		<Message>[ERR1050] Component [Business Application] (Business Application) is not InScope, but is still a Mandatory Component of [Business Application] (Business Application).  The Runbook may not reflect the desired state</Message>
+		<Cause>When a Business Application is set to Out of Scope, it is not included in Runbook calculation.  If this Business Application is a Mandatory Component of one or more Business Applications, then the Runbook will not contain the Out of Scope Business Application, and may not reflect the required Runbook sequence</Cause>
+		<Resolution>Correct issues with the relevant Drawing(s), or set the Out of Scope Business Application as Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1051</Code>
+		<Message>[ERR1051] Component [Business Application] (Business Application) is not In Scope, but is still a Mandatory Component of [Business Application] (Business Application).  The Runbook may not reflect the desired state</Message>
+		<Cause>When a Business Application is set to Out of Scope, it is not included in Runbook calculation.  If this Business Application is a Mandatory Component of one or more Business Applications, then the Runbook will not contain the Out of Scope Business Application, and may not reflect the required Runbook sequence</Cause>
+		<Resolution>Correct issues with the relevant Drawing(s), or set the Out of Scope Business Application as Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1052</Code>
+		<Message>[ERR1052] Could not add relationship between [Business Application] (Business Application] and [Business Application] (Business Application)</Message>
+		<Cause>An error occurred whilst attempting to add a relationship between the two Business Applications</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1053</Code>
+		<Message>[ERR1053] Could not add relationship between [Business Application] (Business Application] and [Server] (Server)</Message>
+		<Cause>An error occurred whilst attempting to add a relationship between the Business Application and Server</Cause>
+		<Resolution>Contact Support</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1054</Code>
+		<Message>[ERR1054] Your client is missing the updated query for GetHARelationships.  Seek assistance from the DR Co-ordinator.</Message>
+		<Cause>The User's Get HA Relationships Database Query is incorrect</Cause>
+		<Resolution>Contact the DR Co-Ordinator</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1055</Code>
+		<Message>[ERR1055] Redundant HA Relationship found between [Server] (Server) and [Server] (Server)</Message>
+		<Cause>An equivalent HA relationship between the two Servers already exists</Cause>
+		<Resolution>Edit the Drawing and remove the HA Relationship</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1056</Code>
+		<Message>[ERR1056] [Server] (Server) cannot be set to Stream [Stream] at an External Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1057</Code>
+		<Message>[ERR1057] [Server] (Server) cannot be set to Stream A.  Stream A only applies to Business Applications</Message>
+		<Cause>The Server cannot be set to Stream A</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore Stream</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1058</Code>
+		<Message>[ERR1058] [Server] (Server) cannot be set to Stream B.  SRM is unavailable to Servers hosted at the Recovery Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1059</Code>
+		<Message>[ERR1059] [Server] (Server) cannot be set to Stream C.  Restore from Backup is unavailable to Servers hosted at the Recovery Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1060</Code>
+		<Message>[ERR1060] [Server] (Server) cannot be set to Stream D.  Stream D restoration is unavailable to Servers hosted at the Recovery Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1061</Code>
+		<Message>[ERR1061] [Server] (Server) cannot be set to Stream E.  Stream E cannot be applied to Servers hosted internally</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1062</Code>
+		<Message>[ERR1062] [Server] (Server) cannot be set to Stream F.  This Recovery Stream is reserved for future use</Message>
+		<Cause>Stream F is not a valid selection</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1063</Code>
+		<Message>[ERR1063] [Server] (Server) cannot be set to Stream A.  Stream A only applies to Business Applications</Message>
+		<Cause>The Server cannot be set to Stream A</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore Stream</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1064</Code>
+		<Message>[ERR1064] [Server] (Server) cannot be set to Stream B.  SRM is unavailable to Servers at this Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1065</Code>
+		<Message>[ERR1065] [Server] (Server) cannot be set to Stream C.  Restore from Backup is unavailable to Servers at this Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1066</Code>
+		<Message>[ERR1066] [Server] (Server) cannot be set to Stream D.  Stream D restoration is unavailable to Servers at this Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1067</Code>
+		<Message>[ERR1067] [Server] (Server) cannot be set to Stream E.  Stream E cannot be applied to Servers hosted internally</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1068</Code>
+		<Message>[ERR1068] [Server] (Server) cannot be set to Stream F.  This Recovery Stream is reserved for future use</Message>
+		<Cause>Stream F is not a valid selection</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1069</Code>
+		<Message>[ERR1069] [Server] (Server) cannot be set to Stream A.  Stream A only applies to Business Applications</Message>
+		<Cause>The Server cannot be set to Stream A</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore Stream</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1070</Code>
+		<Message>[ERR1070] [Server] (Server) cannot be set to Stream B.  SRM is unavailable to Servers at this Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1071</Code>
+		<Message>[ERR1071] [Server] (Server) cannot be set to Stream C.  Restore from Backup is unavailable to Servers at this Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1072</Code>
+		<Message>[ERR1072] [Server] (Server) cannot be set to Stream D.  Stream D restoration is unavailable to Servers at this Site</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1073</Code>
+		<Message>[ERR1073] [Server] (Server) cannot be set to Stream E.  Stream E cannot be applied to Servers at unprotected Sites</Message>
+		<Cause>It is not possible to Recover this Site and Stream combination</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1074</Code>
+		<Message>[ERR1074] [Server] (Server) cannot be set to Stream F.  This Recovery Stream is reserved for future use</Message>
+		<Cause>Stream F is not a valid selection</Cause>
+		<Resolution>Edit the Drawing and set a valid Restore combination</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1075</Code>
+		<Message>[ERR1075] [Server] (Server) has no Physical Sitename</Message>
+		<Cause>The Physical Site name for this Server has not been Specified</Cause>
+		<Resolution>Edit the drawing and set a Physical Sitename for this Server</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1076</Code>
+		<Message>[ERR1076] [Server] (Server): Could not load data for property 'Virtual'</Message>
+		<Cause>The Get Server Details Query did not return valid data for Property 'Virtual'</Cause>
+		<Resolution>Check the Get Server Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1077</Code>
+		<Message>[ERR1077 ][Server] (Server): Could not load data for property 'Add to Management Pack'</Message>
+		<Cause>The Get Server Details Query did not return valid data for Property ‘Add To Management Pack'</Cause>
+		<Resolution>Check the Get Server Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1078</Code>
+		<Message>[INF1078] [Number] Drawing Database change(s) detected at [Date / Time]!  You may need to reload your Drawing data.</Message>
+		<Cause>The Drawing Database has been changed.  These changes may alter the Runbook.</Cause>
+		<Resolution>Reload the Drawing Data</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1079</Code>
+		<Message>[INF1079] Change to [Table Name] by [Username] at [Date / Time]</Message>
+		<Cause>The Drawing Database has been changed.  These changes may alter the Runbook.</Cause>
+		<Resolution>Reload the Drawing Data</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1080</Code>
+		<Message>[INF1080] Change by [Username] at [Date / Time]</Message>
+		<Cause>The Drawing Database has been changed.  These changes may alter the Runbook.</Cause>
+		<Resolution>Reload the Drawing Data</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1081</Code>
+		<Message>[INF1081] [Business Application] Drawing status is not Approved, so a Management Pack for this Business Application will not be created</Message>
+		<Cause>Management Packs are only created for Approved Drawings (unless User settings are set to over-ride this)</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1082</Code>
+		<Message>[ERR1082] [Business Application] (Business Application) is incorrectly marked as HA</Message>
+		<Cause>The Business Application is set to HA, but the Business Application architecture prevents this from occurring</Cause>
+		<Resolution>Correct the Drawing to either set the Business Application as not HA, or seek advice from Architecture to modify the infrastructure design</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1083</Code>
+		<Message>[ERR1083] [Business Application] (Business Application) is incorrectly marked as HA</Message>
+		<Cause>The Business Application is set to HA, but the Business Application architecture prevents this from occurring</Cause>
+		<Resolution>Correct the Drawing to either set the Business Application as not HA, or seek advice from Architecture to modify the infrastructure design</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1084</Code>
+		<Message>[ERR1084] [Business Application] (Business Application): Check for circular dependency with [Business Application] (Business Application)</Message>
+		<Cause>[Business Application] has a circular Dependency with its Stream Dependent Service</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1085</Code>
+		<Message>[ERR1085] [Business Application] (Business Application): Check for circular dependency with [Business Application] (Business Application)</Message>
+		<Cause>[Business Application] has a circular Dependency with its Stream Dependent Service</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1086</Code>
+		<Message>[ERR1086] [Business Application] (Business Application): Check for circular dependency with [Business Application] (Business Application)</Message>
+		<Cause>[Business Application] has a circular Dependency with its Stream Dependent Service</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1087</Code>
+		<Message>[ERR1087] [Business Application] (Business Application): Check for circular dependency with [Business Application] (Business Application)</Message>
+		<Cause>[Business Application] has a circular Dependency with its Stream Dependent Service</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1088</Code>
+		<Message>[ERR1088] [Business Application] (Business Application): Check for circular dependency with [Business Application] (Business Application)</Message>
+		<Cause>[Business Application] has a circular Dependency with its Stream Dependent Service</Cause>
+		<Resolution>Correct issue with the relative Drawing(s).  If dependencies are correct, ensure one of the relationships is set to Optional</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1089</Code>
+		<Message>[INF1089] Runbook Region set to [Number]</Message>
+		<Cause>The Runbook Region for this Business Application has been set to [Number].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1090</Code>
+		<Message>[INF1090] [Business Application] (Business Application) Stream is [Recovery Stream]</Message>
+		<Cause>The Recovery Stream for this Business Application has been set to [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1091</Code>
+		<Message>[INF1091] [Business Application] (Business Application) Stream is [Recovery Stream]</Message>
+		<Cause>The Recovery Stream for this Business Application has been set to [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1092</Code>
+		<Message>[INF1092] Rolled up Server Stream is [Recovery Stream]</Message>
+		<Cause>The Rolled Up Server Stream for this Business Application's Stream calculation is [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1093</Code>
+		<Message>[INF1093] Rolled up Business Application Stream is [Recovery Stream]</Message>
+		<Cause>The Rolled Up Business Application Stream for this Business Application's Stream calculation is [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1094</Code>
+		<Message>[INF1094] Resultant Stream is [Recovery Stream]</Message>
+		<Cause>The Resultant Stream for this Business Application's Stream calculation is [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1095</Code>
+		<Message>[INF1095] Resultant Stream is [Recovery Stream]</Message>
+		<Cause>The Resultant Stream for this Business Application's Stream calculation is [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1096</Code>
+		<Message>[INF1096] Resultant Stream is [Recovery Stream]</Message>
+		<Cause>The Resultant Stream for this Business Application's Stream calculation is [Recovery Stream].</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1097</Code>
+		<Message>[INF1097] Added Relationship to [Business Application] (Business Application)</Message>
+		<Cause>A Relationship has been added to [Business Application]</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1098</Code>
+		<Message>[INF1098] Added Relationship to [Server] (Server)</Message>
+		<Cause>A Relationship has been added to [Server]</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1099</Code>
+		<Message>[INF1099] Added Relationship to [Server] (Server)</Message>
+		<Cause>A Relationship has been added to [Server]</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1100</Code>
+		<Message>[ERR1100] [Business Application] (Business Application) is incorrectly marked as HA</Message>
+		<Cause>The Business Application is set to HA, but the Business Application architecture prevents this from occurring</Cause>
+		<Resolution>Correct the Drawing to either set the Business Application as not HA, or seek advice from Architecture to modify the infrastructure design</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1101</Code>
+		<Message>[ERR1101] [Business Application] (Business Application) is In Scope, but does not have a Drawing</Message>
+		<Cause>[Business Application] is In Scope, but does not have a Drawing</Cause>
+		<Resolution>Create a Drawing for [Business Application], or set it to Out of Scope</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1102</Code>
+		<Message>[ERR1102] [Business Application] (Business Application) is In Scope, but does not have any Components</Message>
+		<Cause>This Business Application has no Components</Cause>
+		<Resolution>Evaluate if this Business Application is required in the Drawing set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1103</Code>
+		<Message>[ERR1103] [Business Application] (Business Application) is In Scope, but a Recovery stream could not be determined</Message>
+		<Cause>[Business Application] is In Scope, but a Recovery stream could not be determined</Cause>
+		<Resolution>Evaluate the Drawing properties to ensure values are correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1104</Code>
+		<Message>[ERR1104] [Business Application] (Business Application) is Stream A, but has no HA components</Message>
+		<Cause>[Business Application] is Stream A, but has no HA components</Cause>
+		<Resolution>Reset the HA property, or add HA components as appropriate</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1105</Code>
+		<Message>[ERR1105] HA relationships of [Business Application] (Business Application) do not include both recovery and protected site located components, so HA is ineffective</Message>
+		<Cause>HA relationships of [Business Application] do not include both recovery and protected site located components, so HA is ineffective</Cause>
+		<Resolution>Set the HA property or Site locations appropriately</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1106</Code>
+		<Message>[ERR1106] [Server] (Server) Stream is set to 'A' which is an invalid Server Stream</Message>
+		<Cause>[Server] Stream is set to 'A' which is an invalid Server Stream</Cause>
+		<Resolution>Set the Stream for the Server as appropriate</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1107</Code>
+		<Message>[ERR1107] Could not set Health state for [Server] (Server)</Message>
+		<Cause>Health State for [Server] could not be set.</Cause>
+		<Resolution>Check SCOM for the health of [Server]</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1108</Code>
+		<Message>[ERR1108] Could not load vCenter data for Site A from SQL Server</Message>
+		<Cause>The vCenter Database for the Protected Site cannot be queried</Cause>
+		<Resolution>Ensure the SQL Connection string for the Primary site is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1109</Code>
+		<Message>[ERR1109] Could not load vCenter data for Site B from SQL Server</Message>
+		<Cause>The vCenter Database for the Recovery Site cannot be queried</Cause>
+		<Resolution>Ensure the SQL Connection string for the Secondary site is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1110</Code>
+		<Message>[INF1110] Reload necessary due to 'In Scope' change</Message>
+		<Cause>Changing the values of 'In Scope' means that the Runbook is affected, and as such needs to be reloaded</Cause>
+		<Resolution>Reload the Drawing set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1111</Code>
+		<Message>[INF1111] Reload necessary due to 'In Scope' change</Message>
+		<Cause>Changing the values of 'In Scope' means that the Runbook is affected, and as such needs to be reloaded</Cause>
+		<Resolution>Reload the Drawing set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1112</Code>
+		<Message>[INF1112] Reload necessary due to 'In Scope' change</Message>
+		<Cause>Changing the values of 'In Scope' means that the Runbook is affected, and as such needs to be reloaded</Cause>
+		<Resolution>Reload the Drawing set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1113</Code>
+		<Message>[INF1113] Reload necessary due to 'In Scope' change</Message>
+		<Cause>Changing the values of 'In Scope' means that the Runbook is affected, and as such needs to be reloaded</Cause>
+		<Resolution>Reload the Drawing set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1114</Code>
+		<Message>[INF1114] Reload necessary due to 'In Scope' change</Message>
+		<Cause>Changing the values of 'In Scope' means that the Runbook is affected, and as such needs to be reloaded</Cause>
+		<Resolution>Reload the Drawing set</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1115</Code>
+		<Message>[INF1115] [Business Application] (Business Application): In Scope set to [True or False]</Message>
+		<Cause>The In Scope value of [Business Application] has been set to [True or False]</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1116</Code>
+		<Message>[INF1116] Status set to [Status] by [Username] at [Date and Time]</Message>
+		<Cause>The Status of the Drawing has been updated</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1117</Code>
+		<Message>[INF1117] [Business Application] Drawing saved</Message>
+		<Cause>The [Business Application] Drawing has been saved</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1118</Code>
+		<Message>[INF1118] Drawing saved</Message>
+		<Cause>The Drawing has been saved</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1119</Code>
+		<Message>[INF1119] A problem was encountered whilst updating or creating a Management Pack</Message>
+		<Cause>An issue was encountered whilst the Management Pack was being created</Cause>
+		<Resolution>Review previous messages for the reason for the error</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1120</Code>
+		<Message>[INF1120] [Business Application] (Business Application) has changed state from [Previous State] to [New State]</Message>
+		<Cause>[Business Application] has changed state (as described)</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1121</Code>
+		<Message>[INF1121] Added HA Relationship between [Server 1] (Server) and [Server 2] (Server)</Message>
+		<Cause>A HA Relationship was added between the two listed Servers</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1122</Code>
+		<Message>[INF1122] Created new Site: [Site Name]</Message>
+		<Cause>A new Site was added to the in-memory data-set</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1123</Code>
+		<Message>[ERR1123] [Server] (Server) is not associated with any Business Application</Message>
+		<Cause>The Server listed is contained within the iServer Database, however it is not included on any Drawings</Cause>
+		<Resolution>Review the iServer objects, and remove the listed Server</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1124</Code>
+		<Message>[ERR1124] Could not create connection to SCOM Server</Message>
+		<Cause>A connection could not be established with the specified SCOM Server</Cause>
+		<Resolution>Review Tool | Options &gt; System Center &gt; SCOM Server value and ensure the detail is correct.  Stop and Start the DRPT if you make any changes to the System Center Server names</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1125</Code>
+		<Message>[ERR1125] Could not create connection to SCSM Server</Message>
+		<Cause>A connection could not be established with the specified SCSM Server</Cause>
+		<Resolution>Review Tool | Options &gt; System Center &gt; SCSM Server value and ensure the detail is correct.  Stop and Start the DRPT if you make any changes to the System Center Server names</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1126</Code>
+		<Message>[INF1126] Management Pack update not required... ([New Version] &lt;= [Current Version])</Message>
+		<Cause>There is no need to update the Management Pack as the new version is less than or equal to the existing version</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1127</Code>
+		<Message>[INF1127] Management Pack update required... ([New Version] &gt; [Current Version])</Message>
+		<Cause>The existing Management Pack requires updating because the new version is greater than the existing version</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1128</Code>
+		<Message>[INF1128] Success</Message>
+		<Cause>The SCOM Management Pack Import was successful</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1129</Code>
+		<Message>[ERR1129] Failure</Message>
+		<Cause>The SCOM Management Pack Import was not successful</Cause>
+		<Resolution>Review previous messages for the reason for the error</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1130</Code>
+		<Message>[INF1130] Success</Message>
+		<Cause>The SCSM Management Pack Import was successful</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1131</Code>
+		<Message>[ERR1131] Failure</Message>
+		<Cause>The SCSM Management Pack Import was not successful</Cause>
+		<Resolution>Review previous messages for the reason for the error</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1132</Code>
+		<Message>[ERR1132] Could not connect to SCOM Server</Message>
+		<Cause>The request to determine the Server ID from the SCOM Server failed</Cause>
+		<Resolution>Ensure the health of the specified SCOM Server is ok.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1133</Code>
+		<Message>[ERR1133] Could not connect to SCOM Server</Message>
+		<Cause>The request to determine the Object ID from the SCOM Server failed</Cause>
+		<Resolution>Ensure the health of the specified SCOM Server is ok.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1134</Code>
+		<Message>[ERR1134] Could not connect to SCOM Server</Message>
+		<Cause>The request to determine the Business Application ID from the SCOM Server failed</Cause>
+		<Resolution>Ensure the health of the specified SCOM Server is ok.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1135</Code>
+		<Message>[ERR1135] Could not get determine if the Management Pack already exists</Message>
+		<Cause>The request to determine if the Management Pack exists failed</Cause>
+		<Resolution>Ensure the health of the specified SCOM Server is ok.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1136</Code>
+		<Message>[INF1136] Saving...</Message>
+		<Cause>The Management Pack is being saved</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1137</Code>
+		<Message>[INF1137] Saved</Message>
+		<Cause>The Management Pack was saved</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1138</Code>
+		<Message>[INF1138] Importing...</Message>
+		<Cause>The Management Pack is being imported</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1139</Code>
+		<Message>[INF1139] Imported</Message>
+		<Cause>The Management Pack was imported</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1140</Code>
+		<Message>[ERR1140] Access denied</Message>
+		<Cause>The System Center Management Server responded to the Management Pack import request with an UnauthorizedAccessEnterpriseManagementException  (Access Denied)</Cause>
+		<Resolution>Review the Users security rights within the System Center product.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1141</Code>
+		<Message>[ERR1141] Unexpected error: [Error Description]</Message>
+		<Cause>An error (other than UnauthorizedAccessEnterpriseManagementException) has occurred whilst attempting to Import the Management Pack</Cause>
+		<Resolution>Review the configuration and health of System Center</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1142</Code>
+		<Message>[ERR1142] Could not save Management Pack: [Error Description]</Message>
+		<Cause>The Management Pack could not be saved.  [Error Description] provides further detail.</Cause>
+		<Resolution>Review [Error Description] and act accordingly</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1143</Code>
+		<Message>[ERR1143] Error whilst performing ManagementPack.AcceptChanges().  The error was: [Error Description]</Message>
+		<Cause>The Management Pack could not be validated.  [Error Description] provides further detail.</Cause>
+		<Resolution>Review [Error Description] and act accordingly</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1144</Code>
+		<Message>[INF1144] Empty MP Template</Message>
+		<Cause>The Template used for this Management Pack is for zero Components</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1145</Code>
+		<Message>[INF1145] Business Applications Template</Message>
+		<Cause>The Template used for this Management Pack is for Business Application Components only</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1146</Code>
+		<Message>[INF1146] Servers Template</Message>
+		<Cause>The Template used for this Management Pack is for Server Components only</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1147</Code>
+		<Message>[INF1147] Servers and Business Applications Template</Message>
+		<Cause>The Template used for this Management Pack is for Servers and Business Applications Components</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1148</Code>
+		<Message>[ERR1148] Could not find Component Service ([Business Application]) in SCOM Database.  The Management Pack for [Business Application] cannot be created</Message>
+		<Cause>The Business Application could not be found in the SCOM Database, so it could not be added to the Management Pack</Cause>
+		<Resolution>Create a Management Pack for the Component Business Application, and then create the Management Pack for this Business Application again.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1149</Code>
+		<Message>[ERR1149] Could not find Component Server ([Server]) in SCOM Database.  The Management Pack for [Business Application] cannot be created</Message>
+		<Cause>The Server could not be found in the SCOM Database, so it could not be added to the Management Pack</Cause>
+		<Resolution>
+            1. Install the SCOM Agent on the Server/n
+            2. Consider creating a Management Pack Stub if the SCOM Agent cannot be installed on the Server
+        </Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1150</Code>
+		<Message>[INF1150] Loading Drawings...</Message>
+		<Cause>The Drawing Set is being loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1151</Code>
+		<Message>[INF1151] [Number] Drawings found</Message>
+		<Cause>[Number] Drawings were loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1152</Code>
+		<Message>[INF1152] Loading Drawing data...</Message>
+		<Cause>Data for each Drawing is being loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1153</Code>
+		<Message>[INF1153] [Number] Business Applications found</Message>
+		<Cause>[Number] Business Applications were loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1154</Code>
+		<Message>[INF1154] Connected to iServer Database version 233.07</Message>
+		<Cause>Connected to iServer Database version 233.07</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1155</Code>
+		<Message>[INF1155] Connected to iServer Database version 334.00</Message>
+		<Cause>Connected to iServer Database version 334.00</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1156</Code>
+		<Message>[INF1156] Loading Relationships...</Message>
+		<Cause>Relationships are being loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1157</Code>
+		<Message>[INF1157] Created Business Application: [Business Application]</Message>
+		<Cause>A Business Application was created in the in-memory data-set</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1158</Code>
+		<Message>[INF1158] HA relationship(s)...</Message>
+		<Cause>HA Relationships are being loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1159</Code>
+		<Message>[INF1159] [Number] Servers found</Message>
+		<Cause>[Number] Servers were loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1160</Code>
+		<Message>[INF1160] Querying additional details for each Server</Message>
+		<Cause>Additional Server details are being loaded from the iServer SQL Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1161</Code>
+		<Message>[INF1161] Sorting the Primary Runbook...</Message>
+		<Cause>The Primary runbook is being sorted</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1162</Code>
+		<Message>[INF1162] Building Runbooks...</Message>
+		<Cause>The Runbooks are being built</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1163</Code>
+		<Message>[INF1163] Calculating Business Application Runbook order...</Message>
+		<Cause>The Business Application Runbook is being calculated</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1164</Code>
+		<Message>[INF1164] Determining Upstream Dependencies...</Message>
+		<Cause>Upstream dependencies are being calculated</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1165</Code>
+		<Message>[INF1165] Determining SCOM Server Health</Message>
+		<Cause>SCOM is being queried to determine each Server’s Health (as known by SCOM)</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1166</Code>
+		<Message>[INF1166] [Server] (Server) Health state (Error) read by SCOM and set to Error</Message>
+		<Cause>SCOM has reported the state of the Server is ‘Error’, so the state of the Server is being set to ‘Error’</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1167</Code>
+		<Message>[INF1167] [Server] (Server) Health state (Success) read by SCOM and set to OK</Message>
+		<Cause>SCOM has reported the state of the Server is ‘Success’, so the state of the Server is being set to ‘OK’</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1168</Code>
+		<Message>[INF1168] [Server] (Server) Health state (Uninitialized) read by SCOM and set to Degraded</Message>
+		<Cause>SCOM has reported the state of the Server is ‘Uninitialized’, so the state of the Server is being set to ‘Degraded’</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1169</Code>
+		<Message>[INF1169] [Server] (Server) Health state (Warning) read by SCOM and set to Degraded</Message>
+		<Cause>SCOM has reported the state of the Server is ‘Warning’, so the state of the Server is being set to ‘Degraded’</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1170</Code>
+		<Message>[INF1170] SCOM Server health task returned!</Message>
+		<Cause>Query of SCOM Server health has completed</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1171</Code>
+		<Message>[INF1171] Loading Dependency Data...</Message>
+		<Cause>Loading Dependency Data</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1172</Code>
+		<Message>[INF1172] Determining resultant Stream...</Message>
+		<Cause>Determining the resultant Stream</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1173</Code>
+		<Message>[INF1173] Recalculating dependencies...</Message>
+		<Cause>Recalculating dependencies</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1174</Code>
+		<Message>[INF1174] Adding Not In Scope Services to Business Application List...</Message>
+		<Cause>Adding Not In Scope Services to Business Application List</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1175</Code>
+		<Message>[INF1175] Determining Business Application Stream for Stream Dependencies...</Message>
+		<Cause>Determining Business Application Stream for Stream Dependencies</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1176</Code>
+		<Message>[INF1176] Adding Stream dependencies...</Message>
+		<Cause>Adding Stream dependencies</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1177</Code>
+		<Message>[INF1177] Determining Business Application Stream for Runbook...</Message>
+		<Cause>Determining Business Application Stream for Runbook</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1178</Code>
+		<Message>[INF1178] Calculating Server Restore tasks...</Message>
+		<Cause>Calculating Server Restore tasks</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1179</Code>
+		<Message>[INF1179] Calculating Business Application Restore tasks...</Message>
+		<Cause>Calculating Business Application Restore tasks</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1180</Code>
+		<Message>[INF1180] Load complete</Message>
+		<Cause>Drawing Load is complete</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1181</Code>
+		<Message>[INF1181] Determining iServer Read Only status...</Message>
+		<Cause>Determining if the User has access rights to connect to and read from the iServer SQL Server Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1182</Code>
+		<Message>[INF1182] iServer Read Only status returned!</Message>
+		<Cause>iServer Read Only status check has completed</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1183</Code>
+		<Message>[INF1183] Determining iServer Read Write status...</Message>
+		<Cause>Determining if the User has access rights to connect to and write to the iServer SQL Server Database</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1184</Code>
+		<Message>[INF1184] iServer Read Write status returned!</Message>
+		<Cause>iServer Read Write status check has completed</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1185</Code>
+		<Message>[INF1185] Determining System Center Author status...</Message>
+		<Cause>Determining if the User has access rights to connect to and Administer System Center</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1186</Code>
+		<Message>[INF1186] System Center Author status task returned!</Message>
+		<Cause>System Center Author status check has completed</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1187</Code>
+		<Message>[INF1187] Determining vCenter Read status...</Message>
+		<Cause>Determining if the User has access rights to connect to and read from the vCenter SQL Server Databases</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1188</Code>
+		<Message>[INF1188] vCenter Read status task returned!</Message>
+		<Cause>vCenter status check has completed</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1189</Code>
+		<Message>[INF1189] Running validation tests...</Message>
+		<Cause>Drawing Validation tests are starting</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1190</Code>
+		<Message>[INF1190] Creating Management Packs...</Message>
+		<Cause>Management Pack creation has commenced</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1191</Code>
+		<Message>[INF1191] Querying vCenter for additional Server data...</Message>
+		<Cause>The vCenter SQL Server Database is being queried for additional Server data</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1192</Code>
+		<Message>[INF1192] Querying Storage data...</Message>
+		<Cause>The vCenter SQL Server Database is being queried for additional Storage data</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1193</Code>
+		<Message>[ERR1193] Error loading settings from [Filename]</Message>
+		<Cause>An Error occurred whilst loading settings contained within the given Filename</Cause>
+		<Resolution>Check the User has Read access rights to the settings file.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1194</Code>
+		<Message>[INF1194] [Server]  ([Disk]) Restore time: [Disk Restore Time] (Stream [Stream])</Message>
+		<Cause>This messages shows the results of the vCenter SQL Server Database Storage query for the given Server</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1195</Code>
+		<Message>[INF1195] Reordering Business Applications by SRM Group, Stream, Dependent Count, Tier...</Message>
+		<Cause>Reordering of Business Applications has commenced.  The final result will be sorted by Runbook Order, then Stream, then Dependent Business Application count, and finally by Tier</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1196</Code>
+		<Message>[INF1196] Initial result...</Message>
+		<Cause>This is the initial order of all Business Applications (i.e. before re-ordering)</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1197</Code>
+		<Message>[INF1197] Final result...</Message>
+		<Cause>This is the final order of all Business Applications</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1198</Code>
+		<Message>[INF1198] Determining Business Application State...</Message>
+		<Cause>Determination of Business Application State has commenced</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1199</Code>
+		<Message>[ERR1199] [Business Application] (Business Application) is incorrectly marked as HA</Message>
+		<Cause>The Business Application is marked as HA, but due to the location of its Component Servers, this is not correct</Cause>
+		<Resolution>Correct the Drawing to either set the Business Application as not HA, or seek advice from Architecture to modify the infrastructure design</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1200</Code>
+		<Message>[INF1200] Post HA evaluation, the final Stream is [Stream]</Message>
+		<Cause>The final result of Stream determination is shown as [Stream].  This takes into account Component Business Applications, Component Servers, and HA Relationships</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1201</Code>
+		<Message>[ERR1201] [Business Application] (Business Application): Could not load data for property 'Comment 1'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Comment 1'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1202</Code>
+		<Message>[ERR1202] [Business Application] (Business Application): Could not load data for property 'Comment 2'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Comment 2'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1203</Code>
+		<Message>[ERR1203] [Business Application] (Business Application): Could not load data for property 'Comment 3'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Comment 3'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1204</Code>
+		<Message>[ERR1204] [Business Application] (Business Application): Could not load data for property 'Comment 4'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Comment 4'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1205</Code>
+		<Message>[ERR1205] [Business Application] (Business Application): Could not load data for property 'Comment 5'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Comment 5'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1206</Code>
+		<Message>[ERR1206] [Server] (Server): Could not load data for property 'Comment 1'</Message>
+		<Cause>The Get Additional Server Details Query did not return valid data for Property 'Comment 1'</Cause>
+		<Resolution>Check the Get Additional Server Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1207</Code>
+		<Message>[ERR1207] [Server] (Server): Could not load data for property 'Comment 2'</Message>
+		<Cause>The Get Additional Server Details Query did not return valid data for Property 'Comment 2'</Cause>
+		<Resolution>Check the Get Additional Server Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1208</Code>
+		<Message>[ERR1208] [Server] (Server): Could not load data for property 'Comment 3'</Message>
+		<Cause>The Get Additional Server Details Query did not return valid data for Property 'Comment 3'</Cause>
+		<Resolution>Check the Get Additional Server Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1209</Code>
+		<Message>[ERR1209] [Server] (Server): Could not load data for property 'Comment 4'</Message>
+		<Cause>The Get Additional Server Details Query did not return valid data for Property 'Comment 4'</Cause>
+		<Resolution>Check the Get Additional Server Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1210</Code>
+		<Message>[ERR1210] [Server] (Server): Could not load data for property 'Comment 5'</Message>
+		<Cause>The Get Additional Server Details Query did not return valid data for Property 'Comment 5'</Cause>
+		<Resolution>Check the Get Additional Server Details query is correct</Resolution>
+	</ErrorCode>
+    <ErrorCode>
+        <Type>INF</Type>
+        <Code>1211</Code>
+        <Message>[INF1211] Status set to Approved by [Username] at [Date and Time]</Message>
+        <Cause>The Status of the Drawing has been updated</Cause>
+        <Resolution>None.  This is an informational message only.</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>INF</Type>
+        <Code>1212</Code>
+        <Message>[INF1212] [Drawing] Drawing saved</Message>
+        <Cause>The [Business Application] Drawing has been saved</Cause>
+        <Resolution>None.  This is an informational message only.</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>INF</Type>
+        <Code>1213</Code>
+        <Message>[INF1213] Status set to Draft by [Username] at [Date and Time]</Message>
+        <Cause>The Status of the Drawing has been updated</Cause>
+        <Resolution>None.  This is an informational message only.</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>INF</Type>
+        <Code>1214</Code>
+        <Message>[INF1214] [Drawing] Drawing saved</Message>
+        <Cause>The [Business Application] Drawing has been saved</Cause>
+        <Resolution>None.  This is an informational message only.</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>INF</Type>
+        <Code>1215</Code>
+        <Message>[INF1215] Status set to Pending by [Username] at [Date and Time]</Message>
+        <Cause>The Status of the Drawing has been updated</Cause>
+        <Resolution>None.  This is an informational message only.</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>INF</Type>
+        <Code>1216</Code>
+        <Message>[INF1216] [Drawing] Drawing saved</Message>
+        <Cause>The [Business Application] Drawing has been saved</Cause>
+        <Resolution>None.  This is an informational message only.</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>ERR</Type>
+        <Code>1217</Code>
+        <Message>[ERR1217] Unexpected Sql Exception: [Exception]</Message>
+        <Cause>An unexpected SQL Exception has occurred whilst opening a Connection to the SQL Server</Cause>
+        <Resolution>Check the SQL Server is functioning correctly</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>ERR</Type>
+        <Code>1218</Code>
+        <Message>[ERR1218] Unexpected SqlLite Exception: [Exception]</Message>
+        <Cause>An unexpected SQL Exception has occurred whilst opening a Connection to SQLite</Cause>
+        <Resolution>Check the SQLite Database file is available</Resolution>
+    </ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1219</Code>
+		<Message>[ERR1219] Unexpected error: [Error Description]</Message>
+		<Cause>An unexpected error has occurred whilst opening a Connection to SQLite</Cause>
+		<Resolution>Check the SQLite Database file is read-write</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1220</Code>
+		<Message>[ERR1220] SQL Exception: [Error Description]</Message>
+		<Cause>An error occurred whilst opening a connection to the SQL Server</Cause>
+		<Resolution>Check the User has permission to connect to the SQL Server.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1221</Code>
+		<Message>[ERR1221] SQL error filling table (Attempt #[Number]).  Retrying...</Message>
+		<Cause>An error occurred whilst executing the SQL Statement</Cause>
+		<Resolution>Check the SQLite Database file is read-write</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1222</Code>
+		<Message>[ERR1222] SQL Exception: [Error Description]</Message>
+		<Cause>More than 3 errors has occurred whilst attempting to execute the SQL Statement</Cause>
+		<Resolution>Check the SQLite Database file is read-write</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1223</Code>
+		<Message>[ERR1223] SQL Exception: [Error Description]</Message>
+		<Cause>An error occurred whilst opening a connection to the SQLite Database</Cause>
+		<Resolution>Check the User has permission to connect to the SQLite Database file.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1224</Code>
+		<Message>[ERR1224] SQL Exception: [Error Description]</Message>
+		<Cause>An error occurred whilst executing the SQL Statement</Cause>
+		<Resolution>Contact the Server Team and ensure the SQLite Database file is ok</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1225</Code>
+		<Message>[ERR1225] Sql Server connection timeout</Message>
+		<Cause>A timeout error occurred whilst connecting to the SQL Server</Cause>
+		<Resolution>Contact the Server Team and ensure the SQL Server is ok</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1226</Code>
+		<Message>[ERR1226] The calculated recovery time ([Time]) is too long for this Tier 0 Business Application: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application exceeds the configured RTO</Cause>
+		<Resolution>Contact the Business Application owner to ensure they are aware that recovery is not possible within the specified time</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1227</Code>
+		<Message>[ERR1227] The calculated recovery time ([Time]) is too long for this Tier 1 Business Application: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application exceeds the configured RTO</Cause>
+		<Resolution>Contact the Business Application owner to ensure they are aware that recovery is not possible within the specified time</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1228</Code>
+		<Message>[ERR1228] The calculated recovery time ([Time]) is too long for this Tier 2 Business Application: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application exceeds the configured RTO</Cause>
+		<Resolution>Contact the Business Application owner to ensure they are aware that recovery is not possible within the specified time</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1229</Code>
+		<Message>[ERR1229] The calculated recovery time ([Time]) is too long for this Tier 3 Business Application: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application exceeds the configured RTO</Cause>
+		<Resolution>Contact the Business Application owner to ensure they are aware that recovery is not possible within the specified time</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1230</Code>
+		<Message>[ERR1230] The calculated recovery time ([Time]) is too long for this Tier 4 Business Application: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application exceeds the configured RTO</Cause>
+		<Resolution>Contact the Business Application owner to ensure they are aware that recovery is not possible within the specified time</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1231</Code>
+		<Message>[INF1231] The calculated recovery time ([Time]) has the result that this Tier 0 Business Application is being recovered before it is required: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application is too short for the configured RTO</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier, and correct the drawing if necessary</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1232</Code>
+		<Message>[INF1232] The calculated recovery time ([Time]) has the result that this Tier 1 Business Application is being recovered before it is required: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application is too short for the configured RTO</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier, and correct the drawing if necessary</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1233</Code>
+		<Message>[INF1233] The calculated recovery time ([Time]) has the result that this Tier 2 Business Application is being recovered before it is required: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application is too short for the configured RTO</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier, and correct the drawing if necessary</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1234</Code>
+		<Message>[INF1234] The calculated recovery time ([Time]) has the result that this Tier 3 Business Application is being recovered before it is required: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application is too short for the configured RTO</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier, and correct the drawing if necessary.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1235</Code>
+		<Message>[INF1235] The calculated recovery time ([Time]) has the result that this Tier 4 Business Application is being recovered before it is required: [Business Application]</Message>
+		<Cause>The Recovery time for this Business Application is too short for the configured RTO</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier, and correct the drawing if necessary.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1236</Code>
+		<Message>[INF1236] Placing [Business Application] (Business Application) immediately before [Business Application] (Business Application)</Message>
+		<Cause>This Business Application has no dependents, so it has been moved to a more appropriatre location in the Runbook order.</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1237</Code>
+		<Message>[ERR1237] The Stream / Tier combination for [Business Application] (Business Application) is invalid</Message>
+		<Cause>The Stream / Tier combination for this Business Application is invalid</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier and Stream, and correct the drawing if necessary.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1238</Code>
+		<Message>[INF1238] [Server] (Server) will not be added to Management Packs</Message>
+		<Cause>The Database property 'Add To Management Packs' for this Server is set to False, which prevents the Server from being added to Management Packs</Cause>
+		<Resolution>Determine if this Server has the correct value for 'Add To Management Packs', and correct the drawing if necessary.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1239</Code>
+		<Message>[INF1239] Management Pack update required...(Always Import MP = true)</Message>
+		<Cause>The existing Management Pack will be updated because User configuration has set Always Import MP to true</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1240</Code>
+		<Message>[INF1240] Local config database file(s) deleted successfully</Message>
+		<Cause>The previous version of the local configuration database has been deleted</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1241</Code>
+		<Message>[ERR1241] Could not delete local config database file(s)</Message>
+		<Cause>The previous version of the local configuration database could not be deleted</Cause>
+		<Resolution>This may indicate a file permissions problem, and may lead to an eventual disk-space issue.  Check %APPDATA% and consider deleting old configuration files manually.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>INF</Type>
+		<Code>1242</Code>
+		<Message>[INF1242] Config database file copied successfully</Message>
+		<Cause>The new config database has been copied successfully</Cause>
+		<Resolution>None.  This is an informational message only.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1243</Code>
+		<Message>[ERR1243] Could not copy Config database to local PC</Message>
+		<Cause>The new version of the configuration database could not be copied.</Cause>
+		<Resolution>This may indicate a file permissions problem.  Check %APPDATA% permissions is correct.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1244</Code>
+		<Message>[ERR1244] Unexpected error copying Config database to local PC</Message>
+		<Cause>An unexpected error has occured whilst attempting to copy the Configuration database file.</Cause>
+		<Resolution>Check permissions and that the file exists.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1245</Code>
+		<Message>[ERR1245] Could not find local Config Database</Message>
+		<Cause>The local Configuration database could not be found.</Cause>
+		<Resolution>Check %APPDATA% and check permissions are as expected.  Check the Central Config file exists.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1246</Code>
+		<Message>[ERR1246] The Tier of [Business Application] (Business Application) may be incorrectly defined</Message>
+		<Cause>Stream and Tier calculation have placed this Business Application earlier in the Runbook than other Applications that are marked with a higher Priority (i.e. Tier)</Cause>
+		<Resolution>Determine if this Business Application has the correct assigned Tier, and correct the drawing if necessary.</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1247</Code>
+		<Message>[ERR1247] Drawing [Drawing] Management Pack version in SCOM ([Version]) is inconsistent with the Drawing Set [Version]</Message>
+		<Cause>The Management Pack loaded into SCOM is different to what is required by the Drawing Set</Cause>
+		<Resolution>Update the Management Pack</Resolution>
+	</ErrorCode>
+    <ErrorCode>
+        <Type>ERR</Type>
+        <Code>1248</Code>
+        <Message>[ERR1248] A Business Application for [Drawing] (Drawing) was not specified</Message>
+        <Cause>The Focused Application Name for the specified Drawing was not found</Cause>
+        <Resolution>Update the Management Drawing, setting the Application Name</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>ERR</Type>
+        <Code>1249</Code>
+        <Message>[ERR1249] [Business Application] (Business Application): Could not load additional data</Message>
+        <Cause>The Get Business Application Details Query did not return valid data for this Business Application</Cause>
+        <Resolution>Check the status of the SQL Server.  If this error does not reoccur, reload the information but check the frequency, and advise Technical Support as necessary</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>ERR</Type>
+        <Code>1250</Code>
+        <Message>[ERR1250] [Server] (Server) Stream is set to 'B' and Virtual is set to 'false' which is an invalid combination</Message>
+        <Cause>A physical Server cannot be recovered using tools for Virtual machines</Cause>
+        <Resolution>Set the Stream for the Server as appropriate</Resolution>
+    </ErrorCode>
+    <ErrorCode>
+        <Type>ERR</Type>
+        <Code>1251</Code>
+        <Message>[ERR251] A Business Application for the Drawing [Drawing] was not found</Message>
+        <Cause>There was a problem loading the Drawing Set</Cause>
+        <Resolution>Ensure the Drawing Set is correct</Resolution>
+    </ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1252</Code>
+		<Message>[ERR1252] [Business Application] (Business Application): Could not load data for property 'Work Instruction Name'</Message>
+		<Cause>The Get Business Application Details Query did not return valid data for Property 'Work Instruction Name'</Cause>
+		<Resolution>Check the Get Business Application Details query is correct</Resolution>
+	</ErrorCode>
+	<ErrorCode>
+		<Type>ERR</Type>
+		<Code>1253</Code>
+		<Message>[ERR1253] [Business Application] (Business Application) has at least one component that is recovered after it ([Business Application])!  This will cause the Runbook to be incorrect!</Message>
+		<Cause>Components of a Business Application must be recovered before the Application</Cause>
+		<Resolution>Review all components of the Business Application and ensure the Tier of each Component Business Application is correct</Resolution>
+	</ErrorCode>
+</ErrorCodes>
