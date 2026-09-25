@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ISA.Dependency")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ISA Technologies")]
+[assembly: AssemblyCompany("Dave Robinson")]
 [assembly: AssemblyProduct("ISA.Dependency")]
-[assembly: AssemblyCopyright("Copyright © ISA Technologies 2015")]
+[assembly: AssemblyCopyright("Copyright © Dave Robinson 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

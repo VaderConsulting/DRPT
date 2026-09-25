@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DR Planning Tool")]
 [assembly: AssemblyDescription("Disaster Recovery Planning Tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ISA Technologies")]
+[assembly: AssemblyCompany("Dave Robinson")]
 [assembly: AssemblyProduct("DR Planning Tool")]
-[assembly: AssemblyCopyright("Copyright © ISA Technologies 2015 - 2016")]
+[assembly: AssemblyCopyright("Copyright © Dave Robinson 2015–2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
