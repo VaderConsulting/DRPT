@@ -9,9 +9,9 @@ DR Planning Tool (DRPT) 2.x: a C# WinForms app that maps business applications, 
 | Project | Language | Type | Purpose |
 |---|---|---|---|
 | `DR Tool` (DR Planning Tool) | C# | WinForms exe (.NET 4.6.1) | Main UI: MDI or single-window shell, business application / server / list / drawing forms, dependency map, runbook export, simulation, recovery estimates, options |
-| `ISA.Dependency` | C# | Class library (.NET 4.0) | Domain model: business applications, services, servers, disks, HA groups, physical sites, relationships, recovery tasks, runbooks, topological sort |
-| `ISA.Orbus` | C# | Class library (.NET 4.0) | Data layer for the Orbus iServer repository database (loads applications, servers, sites and attributes) |
-| `ISA.SystemCenter` | C# | Class library (.NET 4.0) | SCOM / SCSM integration via the System Center 2012 R2 SDK: server health, component lookup, management pack creation and sealing |
+| `Dependency` (historical assembly name retained in-tree) | C# | Class library (.NET 4.0) | Domain model: business applications, services, servers, disks, HA groups, physical sites, relationships, recovery tasks, runbooks, topological sort |
+| `Orbus` (historical assembly name retained in-tree) | C# | Class library (.NET 4.0) | Data layer for the Orbus iServer repository database (loads applications, servers, sites and attributes) |
+| `SystemCenter` (historical assembly name retained in-tree) | C# | Class library (.NET 4.0) | SCOM / SCSM integration via the System Center 2012 R2 SDK: server health, component lookup, management pack creation and sealing |
 | `Setup` | InstallShield | InstallShield 2015 Limited Edition (Express) project | Builds the DRPT installer (`Setup.isl`) |
 | `Management Packs` | XML | Solution folder | Core customisations management pack and public signing key token used when sealing generated packs |
 
@@ -23,7 +23,7 @@ Open `DR Planning Tool.sln` at the repository root and set **DR Planning Tool** 
 
 The solution also references projects and binaries from sibling folders that are **not in this repository**. In the original layout they sat next to `Solution`:
 
-- `..\Libraries\` - `ISA.Helper`, `ISA.Database`, `ISA.DataLayer`, `ISA.CommandLine`, `HtmlRichTextBox`, `Microsoft.AGL` (MSAGL: `Microsoft.AGL`, `Microsoft.AGL.Drawing`, `Microsoft.AGL.GraphViewerGdi`) and `ReadOnlyPropertyGrid\Rajeev.Windows.Forms`
+- `..\Libraries\` - `Helper`, `Database`, `DataLayer`, `CommandLine` (historical assembly names retained in-tree), `HtmlRichTextBox`, `Microsoft.AGL` (MSAGL: `Microsoft.AGL`, `Microsoft.AGL.Drawing`, `Microsoft.AGL.GraphViewerGdi`) and `ReadOnlyPropertyGrid\Rajeev.Windows.Forms`
 - `..\2012 R2 SDK Binaries\` - `Microsoft.EnterpriseManagement.Core.dll` and `Microsoft.EnterpriseManagement.OperationsManager.dll`
 
 To build it, put those folders back as siblings of the repository folder, or repoint the references. You can unload the `Setup` project if you don't have InstallShield.
@@ -40,17 +40,18 @@ To build it, put those folders back as siblings of the repository folder, or rep
 
 ## Attribution and provenance
 
+my working copy from Development folder `DRPT`.
 - Working copy from my Development folder `DRPT/DRPT (v2)/Solution`.
-- Written by Dave Robinson. The assemblies carry `AssemblyCompany("Dave Robinson")` and `Copyright © Dave Robinson 2015–2016`, and the product name is "DR Planning Tool" (assembly version 2.16.1.80). Source control bindings point to a Team Foundation Server.
-- Other DRPT copies exist in the same OneDrive folder and were intentionally **not** included: `DRPT (v1)`, `DRPT feb 2016`, the `DRPT 2.x (latest)` folder (it only holds the files the InstallShield installer deploys, not source), plus a `Backup` folder. This repository is the 2.x-era source from `DRPT (v2)`.
+- Written by Dave Robinson. The assemblies carry `AssemblyCompany("Dave Robinson")` and `Copyright © Dave Robinson 2015-2016`, and the product name is "DR Planning Tool" (assembly version 2.16.1.80). Source control bindings point to a Team Foundation Server.
+- Other DRPT copies exist in the same Development tree and were intentionally **not** included: `DRPT (v1)`, `DRPT feb 2016`, the `DRPT 2.x (latest)` folder (it only holds the files the InstallShield installer deploys, not source), plus a `Backup` folder. This repository is the 2.x-era source from `DRPT (v2)`.
 - Third-party components are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ### Left out of this import
 
 - Build output and tooling folders: `bin`, `obj`, `.vs`, `packages`, `.nugetaudit`, the InstallShield build output under `Setup/Setup`, the `.suo` / `.csproj.user` files, and the TFS `.vspscc` / `.vssscc` binding files, `UpgradeLog.htm`, the `Setup.isl.774` backup and a zero-byte Paint.NET temp file
 - SQL Server database files (`DRPTConfig*.mdf` / `.ldf`). Rebuild them from `DR Tool/Database/*.sql`.
-- The private strong-name key `Management Packs/isa.snk`. Only the public key `isapublic.snk` and its token are kept. Use your own key pair to seal management packs.
-- The compiled, sealed pack `ISA.DistributedApplications.Core.Customisations.mp`, plus two client-specific management pack exports (`FIN.DistributedApplications.Core.Customisations.xml` and an SCSM `ServiceManager.LinkingFramework.Configuration.xml` export)
+- The private strong-name key `Management Packs` private strong-name key file. Only the public key the public key token file and its token are kept. Use your own key pair to seal management packs.
+- The compiled, sealed pack the sealed core customisations management pack, plus two client-specific management pack exports (`FIN.DistributedApplications.Core.Customisations.xml` and an SCSM `ServiceManager.LinkingFramework.Configuration.xml` export)
 - Client server names, the internal DNS suffix, a UNC settings share and the TFS server URL were replaced with placeholders (`CORPSQLPRD001`, `CORPSCOMPRD001`, `.CORP.EXAMPLE.ORG`, `\\YourFileServer\YourShare`, `tfs.example.org`), and the default company name was changed to `Your Organisation`. No passwords or credentials were present: connection strings use Windows authentication (`Trusted_Connection`).
 
 ## License
